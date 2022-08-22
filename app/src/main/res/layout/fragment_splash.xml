@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/motionLayout"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    app:layoutDescription="@xml/fragment_splash_scene"
+    tools:context=".presentation.ui.splashScreen.SplashFragment">
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="@font/dancingscript_bold"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/splash_text_color"
+        android:textSize="@dimen/_30ssp"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/welcome_app"
+        android:text="@string/welcome_to_app"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/app_name"
+        android:textSize="@dimen/_15ssp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/splash_text_color"
+        android:fontFamily="@font/dancingscript_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.motion.widget.MotionLayout>

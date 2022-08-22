@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_3sdp">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_weight="1"
+            android:textSize="@dimen/_9sdp"
+            android:textColor="@color/text_gray_color"
+            android:textStyle="normal"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/app_name"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/info_tv"
+            android:textSize="@dimen/_9sdp"
+            android:textColor="@color/text_gray_color"
+            android:textStyle="normal"
+            android:gravity="right"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/app_name"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

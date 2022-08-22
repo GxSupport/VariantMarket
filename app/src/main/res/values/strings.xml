@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">VariantMarket</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_app">Variant marketga xush kelibsiz</string>
+    <string name="mainPage">Asosiy oyna</string>
+    <string name="category">Bo\'limlar</string>
+    <string name="orders">Buyurtmalar</string>
+    <string name="profil">Profil</string>
+    <string name="search">Qidirish...</string>
+    <string name="viewAll">Hammasini ko\'rish</string>
+    <string name="get_product">Hozir sotib olish</string>
+    <string name="deal_day">Chegirmalar</string>
+    <string name="new_product">Eng yangi mahsulotlar</string>
+    <string name="search_cat">Qidirish bo\'limi</string>
+    <string name="search_data">Topilgan Malumotlar 1000 ta</string>
+    <string name="filter">Filtr</string>
+    <string name="sort">Saralash</string>
+    <string name="clear">CLEAR ALL</string>
+    <string name="buy_product">Sotib olish</string>
+    <string name="comment_product">Fikir qoldirish</string>
+    <string name="comment">Firkir qoldirish</string>
+    <string name="month">Muddati:</string>
+    <string name="credit">12 oy</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textStyle="normal"
+    android:id="@+id/text"
+    android:textSize="@dimen/_12sdp"
+    android:textColor="@color/sort_text_color"
+    android:text="Price - High to Low"
+   android:paddingStart="@dimen/_15sdp"
+    android:paddingEnd="@dimen/_8sdp"
+    android:paddingVertical="@dimen/_10sdp"
+    android:fontFamily="@font/inter_medium"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>

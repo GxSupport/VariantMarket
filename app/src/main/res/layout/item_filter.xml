@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cons"
+    android:paddingVertical="@dimen/_6sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <CheckBox
+        android:id="@+id/checkbox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="normal"
+        android:textSize="@dimen/_13sdp"
+        android:checked="false"
+        android:fontFamily="@font/inter_medium"
+        android:paddingStart="10dp"
+        android:textColor="@color/text_color"
+        android:buttonTintMode="src_atop"
+        style="@style/CustomCheckbox02"
+        android:buttonTint="@color/transparent"
+        android:text="@string/filter"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_height="match_parent"
+        tools:ignore="RtlSymmetry" />
+</androidx.constraintlayout.widget.ConstraintLayout>

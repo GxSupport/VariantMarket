@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="uz.gxteam.variantmarket.presentation.ui.homeScreen.HomeFragment"
+        android:label="@string/mainPage"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_searchedDataFragment"
+            app:destination="@id/searchedDataFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_dataProductFragment"
+            app:destination="@id/dataProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="uz.gxteam.variantmarket.presentation.ui.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.searchView.SearchFragment"
+        android:label="@string/search_cat"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_searchedDataFragment"
+            app:destination="@id/searchedDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchedDataFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.searchedData.ContainerProductFragment"
+        android:label="fragment_searched_data"
+        tools:layout="@layout/fragment_container_product" >
+        <action
+            android:id="@+id/action_searchedDataFragment_to_filterViewFragment"
+            app:destination="@id/filterViewFragment" />
+        <action
+            android:id="@+id/action_searchedDataFragment_to_dataProductFragment"
+            app:destination="@id/dataProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterViewFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.filter.FilterViewFragment"
+        android:label="fragment_filter_view"
+        tools:layout="@layout/fragment_filter_view" />
+    <fragment
+        android:id="@+id/dataProductFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.dataProduct.DataProductFragment"
+        android:label="fragment_data_product"
+        tools:layout="@layout/fragment_data_product" >
+        <action
+            android:id="@+id/action_dataProductFragment_to_productInfoFragment"
+            app:destination="@id/productInfoFragment" />
+        <action
+            android:id="@+id/action_dataProductFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productInfoFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.productInfo.ProductInfoFragment"
+        android:label="fragment_product_info"
+        tools:layout="@layout/fragment_product_info" />
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.comment.CommentFragment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" />
+</navigation>
