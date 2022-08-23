@@ -1,7 +1,10 @@
 package uz.gxteam.variantmarket.utils.composition
 
 import android.content.Intent
+import android.graphics.drawable.GradientDrawable
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -44,5 +47,34 @@ class AppCompositionRoot(
     }
 
 
+    fun viewPager2Animation(viewPager2: ViewPager2){
+        viewPager2.setPageTransformer { page, position ->
+            if (position < -1) {    // [-Infinity,-1)
+                // This page is way off-screen to the left.
+                page.alpha = 0F
+            } else if (position <= 0) {    // [-1,0]
+                page.alpha = 1F
+                page.pivotX = page.width.toFloat()
+                page.rotationY = -90 * kotlin.math.abs(position)
+            } else if (position <= 1) {    // (0,1]
+                page.alpha = 1F
+                page.pivotX = 0F
+                page.rotationY = 90 * kotlin.math.abs(position)
+            } else {    // (1,+Infinity]
+                // This page is way off-screen to the right.
+                page.alpha = 0F
+            }
+        }
 
+    }
+
+    fun drawableColorUpdate(view: View, color:Int){
+        val gradientDrawable = GradientDrawable()
+        gradientDrawable.shape = GradientDrawable.RECTANGLE
+        gradientDrawable.cornerRadius = 20f
+        gradientDrawable.setColor(
+            ContextCompat.getColor(activity, color)
+        )
+        view.background = gradientDrawable
+    }
 }

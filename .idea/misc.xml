@@ -59,6 +59,7 @@
         <entry key="app/src/main/res/drawable/shimmer_hour.xml" value="0.1995" />
         <entry key="app/src/main/res/drawable/shimmer_image_disc.xml" value="0.1995" />
         <entry key="app/src/main/res/drawable/shimmer_mla.xml" value="0.1995" />
+        <entry key="app/src/main/res/drawable/tab_item_back.xml" value="0.1745" />
         <entry key="app/src/main/res/layout-v28/item_new_product.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3265625" />
@@ -69,7 +70,7 @@
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.3380208333333333" />
         <entry key="app/src/main/res/layout/fragment_category2.xml" value="0.33645833333333336" />
-        <entry key="app/src/main/res/layout/fragment_category_data.xml" value="0.33645833333333336" />
+        <entry key="app/src/main/res/layout/fragment_category_data.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_comment.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/fragment_container_product.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/fragment_data_product.xml" value="0.165" />
@@ -78,6 +79,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3265625" />
         <entry key="app/src/main/res/layout/fragment_main_screen.xml" value="0.19695121951219513" />
         <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_product_data.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_product_info.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/fragment_profil.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.25" />
@@ -110,6 +112,7 @@
         <entry key="app/src/main/res/layout/shimmer_product.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/shimmer_search.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/shimmer_searchdata_all.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/tab_layout_item.xml" value="0.33541666666666664" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.340625" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.3390625" />
         <entry key="app/src/main/res/menu/menu_home.xml" value="0.34010416666666665" />

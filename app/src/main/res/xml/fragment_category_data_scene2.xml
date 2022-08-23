@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+       <KeyFrameSet>
+       </KeyFrameSet>
+        <OnSwipe motion:touchAnchorId="@+id/viewPager2" />
+        <OnSwipe motion:touchAnchorId="@+id/viewPager2" />
+        <OnSwipe motion:touchAnchorId="@+id/spring_dots_indicator" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/viewPager2"
+            android:layout_width="match_parent"
+            android:layout_height="0.0001dp"
+            motion:layout_constraintTop_toBottomOf="@id/back_btn"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/viewPager2"
+            android:layout_width="match_parent"
+            android:layout_height="0.001dp"
+            motion:layout_constraintTop_toBottomOf="@id/back_btn"
+            motion:layout_constraintBottom_toTopOf="@+id/tabLayout"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
+            android:id="@+id/spring_dots_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="0.001dp"
+            motion:layout_constraintTop_toBottomOf="@id/viewPager2"
+            motion:layout_constraintRight_toRightOf="parent"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="0dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/title_data"
+            android:layout_width="match_parent"
+            android:layout_height="0.001dp"
+            motion:layout_constraintTop_toBottomOf="@id/spring_dots_indicator"
+            android:layout_marginTop="0dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/title_data"
+            android:layout_width="match_parent"
+            android:layout_height="0.001dp"
+            motion:layout_constraintTop_toBottomOf="@id/spring_dots_indicator"
+            android:layout_marginTop="@dimen/_6sdp" />
+        <Constraint
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/title_data"
+            android:layout_marginTop="0dp" />
+        <Constraint
+            android:id="@+id/nested"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/tabLayout"
+            android:layout_marginTop="0dp" />
+    </ConstraintSet>
+</MotionScene>

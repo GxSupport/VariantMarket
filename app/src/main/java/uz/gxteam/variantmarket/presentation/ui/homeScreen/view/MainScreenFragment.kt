@@ -110,23 +110,7 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(){
             })
             viewPager2.adapter = advertisingAdapter
             springDotsIndicator.attachTo(viewPager2)
-            viewPager2.setPageTransformer { page, position ->
-                if (position < -1) {    // [-Infinity,-1)
-                    // This page is way off-screen to the left.
-                    page.alpha = 0F
-                } else if (position <= 0) {    // [-1,0]
-                    page.alpha = 1F
-                    page.pivotX = page.width.toFloat()
-                    page.rotationY = -90 * kotlin.math.abs(position)
-                } else if (position <= 1) {    // (0,1]
-                    page.alpha = 1F
-                    page.pivotX = 0F
-                    page.rotationY = 90 * kotlin.math.abs(position)
-                } else {    // (1,+Infinity]
-                    // This page is way off-screen to the right.
-                    page.alpha = 0F
-                }
-            }
+           appCompositionRoot.viewPager2Animation(viewPager2)
 
             viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {

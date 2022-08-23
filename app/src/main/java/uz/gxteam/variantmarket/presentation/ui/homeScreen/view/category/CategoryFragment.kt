@@ -63,7 +63,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
             rvCategory.adapter = adapterGenericCategory
             // TODO: CategoryData
             adapterGeneric = AdapterGeneric(R.layout.category_data_item,loadCateGoryDataView()){cateGoryData, position ->
-                appCompositionRoot.screenNavigate.createContainerProduct(cateGoryData.title,OB_POS)
+                appCompositionRoot.screenNavigate.createDataProductFragment(cateGoryData.title,OB_POS)
             }
             rvCategoryData.adapter = adapterGeneric
         }

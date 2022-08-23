@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/motion"
     android:layout_height="match_parent"
+    android:transitionName="card_item"
     app:layoutDescription="@xml/fragment_data_product_scene"
     tools:context=".presentation.ui.dataProduct.DataProductFragment">
 

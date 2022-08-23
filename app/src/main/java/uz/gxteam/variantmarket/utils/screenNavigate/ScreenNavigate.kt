@@ -1,9 +1,13 @@
 package uz.gxteam.variantmarket.utils.screenNavigate
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import uz.gxteam.variantmarket.R
 
 class ScreenNavigate(
@@ -23,6 +27,17 @@ class ScreenNavigate(
         navController.navigate(R.id.action_nav_home_to_searchedDataFragment,bundle,animationViewCreateRight())
     }
 
+
+    fun createDataProductFragment(name:String,position:Int){
+        var bundle = Bundle()
+        bundle.putString("name",name)
+        bundle.putInt("pos",position)
+        navController.navigate(R.id.action_nav_home_to_categoryDataFragment,bundle,animationViewCreateRight())
+    }
+    fun createDataProductFragmentInCategoryView(){
+        var bundle = Bundle()
+        navController.navigate(R.id.action_categoryDataFragment_to_dataProductFragment,bundle,animationViewCreatebottom())
+    }
 
     fun createFilterView(){
         navController.navigate(R.id.action_searchedDataFragment_to_filterViewFragment,Bundle(),animationViewCreatebottom())

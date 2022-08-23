@@ -327,5 +327,20 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment() {
         return listCategory
     }
 
+    fun loadCategoryProduct():ArrayList<String>{
+        var listCategory = ArrayList<String>()
+        listCategory.add("Telefonlar")
+        listCategory.add("Uy texnikalari")
+        listCategory.add("Categories")
+        listCategory.add("Notebooklar")
+        listCategory.add("Naushniklar")
+        listCategory.add("Sichqonchalar")
+        listCategory.add("Sotalar")
+        listCategory.add("Planshketlar")
+        listCategory.add("Tarozi")
+        listCategory.add("Speaker")
+        return listCategory
+    }
+
 }
 

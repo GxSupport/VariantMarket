@@ -59,6 +59,9 @@ class MainActivity : AppCompatActivity(),UiController {
                R.id.dataProductFragment->{
                    supportActionBar?.hide()
                }
+               R.id.categoryDataFragment->{
+                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+               }
            }
         }
     }
@@ -78,6 +81,10 @@ class MainActivity : AppCompatActivity(),UiController {
 
     override fun error(errorCode: Int, message: String) {
 
+    }
+
+    fun toolbarTitle(title:String){
+        binding.appBarMain.toolbar.title = title
     }
 
 

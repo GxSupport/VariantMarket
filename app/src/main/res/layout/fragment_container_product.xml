@@ -8,14 +8,14 @@
     tools:context=".presentation.ui.searchedData.ContainerProductFragment">
     <include
         android:id="@+id/include_data"
-        android:visibility="gone"
+        android:visibility="visible"
         layout="@layout/shimmer_searchdata_all"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consView"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
