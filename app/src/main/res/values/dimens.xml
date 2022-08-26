@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_stack_spacing">12dp</dimen>
+    <dimen name="pageMargin">30dp</dimen>
+    <dimen name="offset">30dp</dimen>
+    <dimen name="pageMarginAndOffset">50dp</dimen>
+
+    <dimen name="next_item_visible_width">50dp</dimen>
+    <dimen name="viewpager_horizontal_margin">10dp</dimen>
+    <dimen name="defaultBtnWidth">210dp</dimen>
+    <dimen name="buttonsMargin">20dp</dimen>
+    <dimen name="doneSize">25dp</dimen>
+    <dimen name="drawableTextMargin">10dp</dimen>
+    <dimen name="progressRadius">10dp</dimen>
+    <dimen name="progressStroke">5dp</dimen>
+    <dimen name="textMarginStyled">20dp</dimen>
+</resources>

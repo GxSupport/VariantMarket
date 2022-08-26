@@ -8,11 +8,12 @@
     <include
         android:id="@+id/include_search"
         layout="@layout/shimmer_search"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cons_view"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -20,20 +21,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:background="@drawable/input_text_style"
             app:layout_constraintWidth_percent="0.92"
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="@dimen/_35sdp">
-            <ImageView
-                android:id="@+id/back"
-                android:layout_weight="5"
-                android:src="@drawable/ic_back_btn"
-                android:padding="@dimen/_5sdp"
-                android:layout_marginLeft="@dimen/_3sdp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
             <EditText
                 android:id="@+id/searchInput"
                 android:layout_weight="1"
@@ -49,9 +42,9 @@
                 android:layout_height="match_parent"/>
             <ImageView
                 android:id="@+id/clear_input"
-                android:layout_weight="5"
+                android:layout_weight="10"
                 android:padding="@dimen/_3sdp"
-                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
                 android:src="@drawable/ic_clear_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>

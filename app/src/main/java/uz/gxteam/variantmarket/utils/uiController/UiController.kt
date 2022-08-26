@@ -4,5 +4,4 @@ interface UiController {
     fun showLoading()
     fun hideLoading()
     fun error(errorCode:Int,message:String)
-
 }

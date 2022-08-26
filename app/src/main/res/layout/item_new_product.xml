@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             tools:targetApi="p">
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:paddingBottom="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
@@ -94,41 +94,119 @@
                     app:layout_constraintTop_toBottomOf="@id/image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+                <View
+                    android:id="@+id/line_view"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    app:layout_constraintTop_toBottomOf="@id/text_product"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/text_gray_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"/>
+
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@id/text_product"
+                    app:layout_constraintTop_toBottomOf="@id/line_view"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:gravity="center"
-                        android:paddingHorizontal="@dimen/_6sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:paddingHorizontal="@dimen/_10sdp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
-                            android:id="@+id/hint"
+                            android:id="@+id/month_summ_hint"
                             android:textStyle="normal"
-                            android:textSize="@dimen/_9sdp"
+                            android:textSize="@dimen/_8sdp"
                             android:textColor="@color/hintColor"
                             android:fontFamily="@font/inter_medium"
-                            android:text="@string/month"
+                            android:text="12 oyga "
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
-
+                        <View
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
                         <TextView
-                            android:id="@+id/text_month"
+                            android:id="@+id/month_summa"
                             android:textColor="@color/text_color"
                             android:textSize="@dimen/_9sdp"
                             android:textStyle="normal"
                             android:fontFamily="@font/inter_medium"
-                            android:text="@string/credit"
+                            android:text="238 000 so'm"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/product_summa_hint"
+                            android:textStyle="normal"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/hintColor"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="@string/product_summa_hint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <View
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                        <TextView
+                            android:id="@+id/product_summa"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_9sdp"
+                            android:textStyle="normal"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="4 000 000 so'm"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                        android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                        android:layout_marginTop="@dimen/_8sdp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:background="@drawable/button_style"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/_25sdp">-->
+<!--                        <androidx.appcompat.widget.AppCompatButton-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:textSize="@dimen/_12sdp"-->
+<!--                            android:textStyle="normal"-->
+<!--                            android:textColor="@color/app_background"-->
+<!--                            android:text="@string/plus"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:layout_marginBottom="@dimen/_2sdp"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"/>-->
+<!--                        <View-->
+<!--                            android:background="@color/app_background"-->
+<!--                            android:layout_width="1dp"-->
+<!--                            android:layout_height="match_parent"/>-->
+<!--                        <androidx.appcompat.widget.AppCompatButton-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:textSize="@dimen/_12sdp"-->
+<!--                            android:textStyle="normal"-->
+<!--                            android:textColor="@color/app_background"-->
+<!--                            android:text="@string/minus"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:layout_marginBottom="@dimen/_2sdp"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"/>-->
+<!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>

@@ -3,6 +3,7 @@ package uz.gxteam.variantmarket.presentation.activitys
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -12,15 +13,18 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ActivityMainBinding
 import uz.gxteam.variantmarket.utils.composition.AppCompositionRoot
 import uz.gxteam.variantmarket.utils.uiController.UiController
+import uz.gxteam.variantmarket.viewModels.mainViewModel.MainViewModel
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(),UiController {
     private lateinit var binding:ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private val mainViewModel:MainViewModel by viewModels()
     lateinit var appCompositionRoot:AppCompositionRoot
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +32,7 @@ class MainActivity : AppCompatActivity(),UiController {
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
         val navControllerApp = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
-        appCompositionRoot = AppCompositionRoot(this,navControllerApp.navController,this,this)
+        appCompositionRoot = AppCompositionRoot(this,navControllerApp.navController,this,this,mainViewModel)
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         window.statusBarColor = resources.getColor(R.color.white)
@@ -39,7 +43,7 @@ class MainActivity : AppCompatActivity(),UiController {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home,R.id.nav_gallery), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home,R.id.category,R.id.orders,R.id.bankCard), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -50,8 +54,14 @@ class MainActivity : AppCompatActivity(),UiController {
                    supportActionBar?.show()
                    supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
                }
-               R.id.searchFragment->{
-                   supportActionBar?.hide()
+               R.id.category->{
+                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
+               }
+               R.id.orders->{
+                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
+               }
+               R.id.bankCard->{
+                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
                }
                R.id.searchedDataFragment->{
                    supportActionBar?.hide()

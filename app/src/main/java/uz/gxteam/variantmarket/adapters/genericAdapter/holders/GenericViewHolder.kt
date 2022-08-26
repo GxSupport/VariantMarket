@@ -11,18 +11,32 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.*
+import uz.gxteam.variantmarket.models.cardData.plasticCard.BankCard
 import uz.gxteam.variantmarket.models.cateGoryData.CateGoryData
 import uz.gxteam.variantmarket.models.filter.FilterData
 import uz.gxteam.variantmarket.models.newsData.NewsData
+import uz.gxteam.variantmarket.models.orders.Orders
 import uz.gxteam.variantmarket.models.searchData.SearchDataAll
 import uz.gxteam.variantmarket.models.simpleCategory.Category
 import uz.gxteam.variantmarket.models.sliderData.Filial
 import uz.gxteam.variantmarket.utils.AppConstant
 import uz.gxteam.variantmarket.utils.extensions.*
 
+
 open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemView),Holder<T>{
     override fun onBind(item: T, position: Int, layoutRes: Int,clickPos:Int,onClikc:(T,position:Int)->Unit) {
         when(layoutRes){
+            R.layout.bank_card->{
+                val binding = BankCardBinding.bind(itemView)
+                val bankCard = item as BankCard
+
+            }
+
+            R.layout.order_item->{
+                // TODO:  Orderr Data
+                val binding = OrderItemBinding.bind(itemView)
+                val orders = item as Orders
+            }
             R.layout.item_search->{
                 val itemSearchBinding = ItemSearchBinding.bind(itemView)
                 val s = item as String
@@ -39,8 +53,8 @@ open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemVie
                 }
                 if (searchDataAll.isDelivery) itemSearchData.dataTraining.isVisible = true
                 itemSearchData.title.text = searchDataAll.title
-                itemSearchData.price.text = searchDataAll.discountSumm.toString()
-                itemSearchData.realSumm.text = searchDataAll.allSumm.toString()
+                itemSearchData.price.text = searchDataAll.discountSumm.format()
+                itemSearchData.realSumm.text = searchDataAll.allSumm.format()
                 itemSearchData.textPercent.text = searchDataAll.percentText
                 itemSearchData.degree.text = searchDataAll.lavel
                 itemSearchData.views.text = searchDataAll.users
@@ -166,7 +180,8 @@ open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemVie
                 if (searchDataAll.discount == true) itemSearchData.discountCard.visible()
                 if(searchDataAll.isDelivery) itemSearchData.delivery.visible() else itemSearchData.delivery.gone()
                 itemSearchData.title.text = searchDataAll.title
-               // itemSearchData.price.text = searchDataAll.discountSumm.toString()
+                itemSearchData.price.text = searchDataAll.discountSumm.format()
+                itemSearchData.realSumma.text = searchDataAll.allSumm.format()
                 itemSearchData.degree.text = searchDataAll.lavel
                 itemSearchData.views.text = searchDataAll.users
             }
@@ -174,7 +189,7 @@ open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemVie
                 val binding = ItemNewProductBinding.bind(itemView)
                 val news = item as NewsData
                 binding.image.dataImage(news.image){}
-                binding.textMonth.textApp(news.month.toString())
+                binding.monthSummHint.textApp("${news.month} oy")
                 binding.textProduct.textApp(news.title)
                 if (news.discount == true && news.isDelivery == true){
                     binding.cardDiscount.visible()

@@ -50,6 +50,12 @@ class AdapterGeneric<T:Any>(
             R.layout.item_new_product->{
                 holder.itemView.animation = loadAnimation(holder.itemView)
             }
+            R.layout.order_item->{
+                holder.itemView.animation = loadAnimation(holder.itemView)
+            }
+            R.layout.bank_card->{
+                holder.itemView.animation = AnimationUtils.loadAnimation(holder.itemView.context,R.anim.anim_view)
+            }
             else->{
 //                val loadAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.anim_view)
 //                holder.itemView.animation = loadAnimation
@@ -96,6 +102,9 @@ class AdapterGeneric<T:Any>(
                     onClick.invoke(currentResult[position],position)
                 }
                 R.layout.item_new_product->{
+                    onClick.invoke(currentResult[position],position)
+                }
+                R.layout.order_item->{
                     onClick.invoke(currentResult[position],position)
                 }
             }

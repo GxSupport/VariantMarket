@@ -23,52 +23,28 @@
                android:scaleType="centerCrop"
                android:layout_width="match_parent"
                android:layout_height="@dimen/_120sdp"/>
-<!--           <androidx.cardview.widget.CardView-->
-<!--               android:id="@+id/save_btn"-->
-<!--               app:layout_constraintLeft_toLeftOf="parent"-->
-<!--               app:cardBackgroundColor="@color/card_like_pr"-->
-<!--               app:layout_constraintRight_toLeftOf="@id/like_btn"-->
-<!--               app:layout_constraintHorizontal_bias="0.98"-->
-<!--               app:layout_constraintTop_toTopOf="@id/like_btn"-->
-<!--               app:layout_constraintBottom_toBottomOf="@id/like_btn"-->
-<!--               android:clickable="true"-->
-<!--               android:focusable="true"-->
-<!--               android:foreground="?attr/selectableItemBackgroundBorderless"-->
-<!--               app:cardCornerRadius="@dimen/_10sdp"-->
-<!--               app:cardElevation="0dp"-->
-<!--               android:layout_marginEnd="@dimen/_4sdp"-->
-<!--               android:layout_marginStart="@dimen/_4sdp"-->
-<!--               android:layout_width="@dimen/_20sdp"-->
-<!--               android:layout_height="@dimen/_20sdp">-->
-<!--               <ImageView-->
-<!--                   android:src="@drawable/ic_image"-->
-<!--                   android:alpha="0.6"-->
-<!--                   android:padding="@dimen/_4sdp"-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="match_parent"/>-->
-<!--           </androidx.cardview.widget.CardView>-->
-<!--           <androidx.cardview.widget.CardView-->
-<!--               android:id="@+id/like_btn"-->
-<!--               app:layout_constraintLeft_toLeftOf="parent"-->
-<!--               app:layout_constraintRight_toRightOf="parent"-->
-<!--               app:layout_constraintTop_toTopOf="parent"-->
-<!--               app:layout_constraintBottom_toBottomOf="parent"-->
-<!--               app:layout_constraintHorizontal_bias="0.96"-->
-<!--               app:layout_constraintVertical_bias="0.05"-->
-<!--               android:clickable="true"-->
-<!--               app:cardBackgroundColor="@color/card_like_pr"-->
-<!--               android:focusable="true"-->
-<!--               android:foreground="?attr/selectableItemBackgroundBorderless"-->
-<!--               app:cardCornerRadius="@dimen/_10sdp"-->
-<!--               app:cardElevation="0dp"-->
-<!--               android:layout_width="@dimen/_20sdp"-->
-<!--               android:layout_height="@dimen/_20sdp">-->
-<!--               <ImageView-->
-<!--                   android:src="@drawable/ic_like"-->
-<!--                   android:padding="@dimen/_4sdp"-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="match_parent"/>-->
-<!--           </androidx.cardview.widget.CardView>-->
+           <androidx.cardview.widget.CardView
+               android:id="@+id/like_btn"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintRight_toRightOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintHorizontal_bias="0.95"
+               app:layout_constraintVertical_bias="0.06"
+               android:clickable="true"
+               app:cardBackgroundColor="@color/card_like_pr"
+               android:focusable="true"
+               android:foreground="?attr/selectableItemBackgroundBorderless"
+               app:cardCornerRadius="@dimen/_10sdp"
+               app:cardElevation="0dp"
+               android:layout_width="@dimen/_20sdp"
+               android:layout_height="@dimen/_20sdp">
+               <ImageView
+                   android:src="@drawable/ic_like"
+                   android:padding="@dimen/_4sdp"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"/>
+           </androidx.cardview.widget.CardView>
        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
     <TextView

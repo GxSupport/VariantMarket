@@ -15,7 +15,10 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>() {
     private lateinit var adapterGeneric: AdapterGeneric<Orders>
     override fun setup(savedInstanceState: Bundle?) {
         binding.apply {
+            adapterGeneric = AdapterGeneric(R.layout.order_item,getOrders()){orders, position ->
 
+            }
+            rv.adapter = adapterGeneric
         }
     }
 

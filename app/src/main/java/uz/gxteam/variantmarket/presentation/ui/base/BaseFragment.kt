@@ -9,10 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.models.allM.AllData
 import uz.gxteam.variantmarket.models.allM.CategoryAll
 import uz.gxteam.variantmarket.models.discount.Discount
 import uz.gxteam.variantmarket.models.filter.FilterData
+import uz.gxteam.variantmarket.models.history.History
 import uz.gxteam.variantmarket.models.newsData.NewsData
 import uz.gxteam.variantmarket.models.orders.Orders
 import uz.gxteam.variantmarket.models.searchData.SearchDataAll
@@ -20,8 +24,9 @@ import uz.gxteam.variantmarket.models.simpleSlide.SlideData
 import uz.gxteam.variantmarket.presentation.activitys.AuthActivity
 import uz.gxteam.variantmarket.presentation.activitys.MainActivity
 import java.lang.reflect.ParameterizedType
+import kotlin.coroutines.CoroutineContext
 
-abstract class BaseFragment<VB:ViewBinding>:Fragment() {
+abstract class BaseFragment<VB:ViewBinding>:Fragment(),CoroutineScope {
 
     private var _binding : VB? = null
     val binding :VB get() = _binding!!
@@ -51,6 +56,9 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment() {
         setup(savedInstanceState)
     }
 
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main.immediate
+
     abstract fun setup(savedInstanceState: Bundle?)
     abstract fun start(savedInstanceState: Bundle?)
 
@@ -62,6 +70,10 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment() {
 
 
 
+
+    fun toolbarLeftIcon(){
+        appCompositionRoot.activityApp.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+    }
 
     private lateinit var slideList:ArrayList<SlideData>
     private lateinit var discountList:ArrayList<Discount>
@@ -155,8 +167,8 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment() {
     fun getMainListData():ArrayList<CategoryAll>{
         allMainItemListChild = ArrayList()
         allMainItemList = ArrayList()
-        allMainItemListChild.add(AllData(image = "https://media.4rgos.it/i/Argos/4420-m025asymmetric-m029-applewatch-tradein?maxW=1200&qlt=75&fmt.jpeg.interlaced=true","like","Top Seller","Assalomu Aleykum","$162","$180","10% ON","5,3","(580)"))
-        allMainItemListChild.add(AllData(image = "https://avatars.mds.yandex.net/get-mpic/4380539/img_id7341649431705533527.jpeg/orig","like","Top Seller","Assalomu Aleykum","$162","$180","10% ON","5,3","(580)"))
+        allMainItemListChild.add(AllData(image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYplhXINf1ICpTjtnIHiX9k5YG45tzlDIosA&usqp=CAU","like","Top Seller","Assalomu Aleykum","$162","$180","10% ON","5,3","(580)"))
+        allMainItemListChild.add(AllData(image = "https://images.samsung.com/za/smartphones/galaxy-s21/buy/s21_family_kv_mo_img.jpg?imwidth=720","like","Top Seller","Assalomu Aleykum","$162","$180","10% ON","5,3","(580)"))
         allMainItemListChild.add(AllData(image = "https://olcha.uz/image/340x340/products/GkMT0H5gZ2BXda3lUWFrn49EM8RuruogXV2fOqKP6jYdzk9Bx0jC3T3vTawa.jpeg","like","Top Seller","Assalomu Aleykum","$162","$180","10% ON","5,3","(580)"))
         allMainItemListChild.add(AllData(image = "https://www.creditasia.uz/upload/iblock/410/nukd5dp7jaughf6kvdzs448rqe0x2oq3/smartfon-samsung-galaxy-s22-ultra-sm-g908b-ds-128gb-red.jpg","like","Top Seller","Assalomu Aleykum","$162","$180","10% ON","5,3","(580)"))
         allMainItemListChild.add(AllData(image = "https://www.creditasia.uz/upload/iblock/1e0/m6ufo2hs0g9h77fl71w34an3ik2z446l/smartfon-samsung-galaxy-s22-ultra-sm-g908b-ds-256gb-black.jpg","like","Top Seller","Assalomu Aleykum","$162","$180","10% ON","5,3","(580)"))
@@ -205,13 +217,13 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment() {
     fun loadListData(): ArrayList<SearchDataAll>{
         allDataSearch = ArrayList()
         allDataSearch.add(SearchDataAll("https://220volt.uz/image/cache/catalog/iPhone/iphone-13pro-Max-1000x1000.jpg",true,"Allen Solly Regular fit cotton shirt",
-            35.0,40.25,"15% OFF","4.3","(1000)",true
+            1400000.0,2000000.0,"15% OFF","4.3","(1000)",true
         ))
         allDataSearch.add(SearchDataAll("https://paragraf.uz/wp-content/uploads/2021/12/paragraf.uz-iphone-12-pro-max-blue-kredit-rassrochka-kredit.png",false,"Allen Solly Regular fit cotton shirt",
-            35.0,40.25,"15% OFF","4.3","(1000)",true
+            1200000.0,1500000.0,"15% OFF","4.3","(1000)",true
         ))
         allDataSearch.add(SearchDataAll("https://kattabozor.s3.eu-central-1.amazonaws.com/ri/5df145366000a5558853fc6fc017dc4443b6190e332805911adc994e6c6fcc51_GqEnyL_640l.jpg",false,"Allen Solly Regular fit cotton shirt",
-            35.0,40.25,"15% OFF","4.3","(1000)",true
+            3000000.0,3500000.0,"15% OFF","4.3","(1000)",true
         ))
         allDataSearch.add(SearchDataAll("https://openshop.uz/uploads/products/photos/202106/bII3YFYS7lJiO6lCXV5kb68DV23tRzPSSLrRhoXV.jpg",true,"Allen Solly Regular fit cotton shirt",
             35.0,40.25,"15% OFF","4.3","(1000)",true
@@ -340,6 +352,22 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment() {
         listCategory.add("Tarozi")
         listCategory.add("Speaker")
         return listCategory
+    }
+
+    fun historyAdapter():ArrayList<History>{
+        val listHistory = ArrayList<History>()
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        return listHistory
     }
 
 }

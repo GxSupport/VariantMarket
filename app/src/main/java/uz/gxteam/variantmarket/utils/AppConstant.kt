@@ -4,9 +4,10 @@ object AppConstant {
     const val COMPANY_NAME = "Variant"
     const val PASSWORDAPP = "password"
     const val EMPTYTEXT = ""
-    const val ACCESSTOKEN = "access_token"
-    const val REFRESHTOKEN = "refresh_token"
-    const val TOKENTYPE = "token_type"
+    const val ACCESS_TOKEN = "access_token"
+    const val EMPTY = ""
+    const val REFRESH_TOKEN = "refresh_token"
+    const val TOKEN_TYPE = "token_type"
     const val ZERO = 0
     const val ONE = 1
     const val TWO = 2
@@ -21,5 +22,6 @@ object AppConstant {
     const val DISCOUNT_POS = 2
     const val PRODUCT_CATEGORY = 3
     const val OB_POS = 0
+
 
 }

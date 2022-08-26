@@ -24,11 +24,6 @@
             app:destination="@id/categoryDataFragment" />
     </fragment>
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="uz.gxteam.variantmarket.presentation.ui.GalleryFragment"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
-    <fragment
         android:id="@+id/searchFragment"
         android:name="uz.gxteam.variantmarket.presentation.ui.searchView.SearchFragment"
         android:label="@string/search_cat"
@@ -85,4 +80,28 @@
             android:id="@+id/action_categoryDataFragment_to_dataProductFragment"
             app:destination="@id/dataProductFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/orders"
+        android:name="uz.gxteam.variantmarket.presentation.ui.homeScreen.view.orders.OrdersFragment"
+        android:label="@string/orders"
+        tools:layout="@layout/fragment_orders" />
+    <fragment
+        android:id="@+id/category"
+        android:name="uz.gxteam.variantmarket.presentation.ui.homeScreen.view.category.CategoryFragment"
+        android:label="@string/category"
+        tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/bankCard"
+        android:name="uz.gxteam.variantmarket.presentation.ui.cardPage.CardFragment"
+        android:label="@string/addCard"
+        tools:layout="@layout/fragment_card" >
+        <action
+            android:id="@+id/action_bankCard_to_createCardFragment"
+            app:destination="@id/createCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createCardFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.create_card.CreateCardFragment"
+        android:label="@string/create_card"
+        tools:layout="@layout/fragment_create_card" />
 </navigation>

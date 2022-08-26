@@ -34,6 +34,7 @@ class ContainerProductFragment : BaseFragment<FragmentContainerProductBinding>()
         binding.apply {
             binding.includeData.shimmer.startShimmer()
             binding.includeData.shimmerCons.visible()
+
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.includeData.shimmer.gone()
                 binding.includeData.shimmer.stopShimmer()

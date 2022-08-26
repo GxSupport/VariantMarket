@@ -10,7 +10,14 @@ import android.view.MenuItem
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.widget.ViewPager2
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.adapterAll.AllItemAdapter
 import uz.gxteam.variantmarket.adapters.advertising.AdvertisingAdapter
@@ -28,7 +35,7 @@ import uz.gxteam.variantmarket.utils.AppConstant.DISCOUNT_POS
 import uz.gxteam.variantmarket.utils.AppConstant.OB_POS
 import uz.gxteam.variantmarket.utils.AppConstant.PRODUCT_CATEGORY
 
-class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(){
+class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvider {
     private lateinit var listCategory:ArrayList<Category>
     private lateinit var advertisingAdapter:AdvertisingAdapter
     private lateinit var discountAdapter: DiscountAdapter
@@ -74,10 +81,15 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(){
     }
 
     override fun start(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
         loadCategoryData()
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        val menuHost: MenuHost = appCompositionRoot.activityApp
+        menuHost.addMenuProvider(this,viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
 
 
 
@@ -117,13 +129,15 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(){
                     super.onPageSelected(position)
                     // TODO: try catch ViewPager position
                     try {
-                        handler.removeCallbacks(slideRunnable)
-                        handler.postDelayed(slideRunnable,3000)
-                        if (position == loadAdvertising().size-1){
-                            handler.postDelayed({
-                                binding.viewPager2.setCurrentItem(0,false)
-                            },3000)
-                        }
+                       launch(Dispatchers.IO) {
+                           handler.removeCallbacks(slideRunnable)
+                           handler.postDelayed(slideRunnable,3000)
+                           if (position == loadAdvertising().size-1){
+                               handler.postDelayed({
+                                   binding.viewPager2.setCurrentItem(0,false)
+                               },3000)
+                           }
+                       }
                     }catch (e:Exception){
                         e.printStackTrace()
                     }
@@ -168,22 +182,7 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(){
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_home,menu)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.nav_home->{
-                Log.e("ItemMenu One", "onOptionsItemSelected: ", )
-            }
-            R.id.nav_gallery->{
-                Log.e("ItemMenu Two", "onOptionsItemSelected: ", )
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
 
 
@@ -235,5 +234,21 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(){
         listCategory.add(Category(name = "Appliances", image = R.drawable.ic_appliances, color = "#3E34D399"))
         listCategory.add(Category(name = "Beauty", image = R.drawable.ic_pamad, color = "#4122D3EE"))
         listCategory.add(Category(name = "Furniture", image = R.drawable.ic_furniture, color = "#3E3B82F6"))
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_home,menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        when(menuItem.itemId){
+            R.id.nav_home->{
+                Log.e("ItemMenu One", "onOptionsItemSelected: ", )
+            }
+            R.id.nav_gallery->{
+                Log.e("ItemMenu Two", "onOptionsItemSelected: ", )
+            }
+        }
+        return false
     }
 }

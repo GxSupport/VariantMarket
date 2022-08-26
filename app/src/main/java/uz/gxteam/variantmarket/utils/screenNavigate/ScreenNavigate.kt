@@ -1,11 +1,6 @@
 package uz.gxteam.variantmarket.utils.screenNavigate
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityOptionsCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import uz.gxteam.variantmarket.R
@@ -13,6 +8,13 @@ import uz.gxteam.variantmarket.R
 class ScreenNavigate(
     private val navController: NavController
 ) {
+
+
+    fun createSearchDataViewInSearchView(search:String){
+        var bundle = Bundle()
+        bundle.putString("name",search)
+        navController.navigate(R.id.action_searchFragment_to_searchedDataFragment,bundle,animationViewCreateRight())
+    }
 
 
     fun createDataProduct(){
@@ -32,7 +34,7 @@ class ScreenNavigate(
         var bundle = Bundle()
         bundle.putString("name",name)
         bundle.putInt("pos",position)
-        navController.navigate(R.id.action_nav_home_to_categoryDataFragment,bundle,animationViewCreateRight())
+        navController.navigate(R.id.categoryDataFragment,bundle,animationViewCreateRight())
     }
     fun createDataProductFragmentInCategoryView(){
         var bundle = Bundle()
@@ -48,6 +50,10 @@ class ScreenNavigate(
 
     fun createDataProdInfo(){
         navController.navigate(R.id.action_nav_home_to_dataProductFragment,Bundle(),animationViewCreateRight())
+    }
+
+    fun createSaveCardUser(){
+        navController.navigate(R.id.action_bankCard_to_createCardFragment,Bundle(),animationViewCreateRight())
     }
 
     fun popBackStack(){

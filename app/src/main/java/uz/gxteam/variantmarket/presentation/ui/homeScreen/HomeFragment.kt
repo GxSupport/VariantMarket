@@ -4,6 +4,11 @@ package uz.gxteam.variantmarket.presentation.ui.homeScreen
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.core.view.MenuProvider
 import androidx.viewpager2.widget.ViewPager2
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.viewPagerAdapter.SlideAdapter
@@ -74,12 +79,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
     override fun start(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
     }
 
 
     fun toolbarTitle(title:String){
         (activity as MainActivity).supportActionBar?.title = title
     }
+
+
 
 }

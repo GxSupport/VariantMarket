@@ -19,6 +19,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
     override fun setup(savedInstanceState: Bundle?) {
         val loadAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_view)
         binding.apply {
+            appCompositionRoot.toolbarLeftIcon()
 
             Handler(Looper.getMainLooper()).postDelayed({
                 includeSearch.shimmerSearch.visibility = View.GONE
@@ -27,10 +28,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 
             searchInput.requestFocus()
             searchLinear.animation = loadAnimation
-            back.setOnClickListener {
-                appCompositionRoot.screenNavigate.popBackStack()
-            }
-
             clearInput.setOnClickListener {
                 if (searchInput.text.toString().isNotEmpty()){
                     searchInput.text.clear()
@@ -41,15 +38,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
 
 
             adapterGeneric = AdapterGeneric(R.layout.item_search,getDataSearch()){ s: String, position: Int ->
-                val navOptions = NavOptions.Builder()
-                    .setEnterAnim(R.anim.enter)
-                    .setExitAnim(R.anim.exit)
-                    .setPopEnterAnim(R.anim.pop_enter)
-                    .setPopExitAnim(R.anim.pop_exit)
-                    .build()
-                var bundle = Bundle()
-                bundle.putString("name",s)
-                findNavController().navigate(R.id.action_searchFragment_to_searchedDataFragment,bundle,navOptions)
+                appCompositionRoot.screenNavigate.createSearchDataViewInSearchView(s)
             }
             rvSearch.adapter = adapterGeneric
 
@@ -57,6 +46,5 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(){
     }
 
     override fun start(savedInstanceState: Bundle?) {
-
     }
 }

@@ -6,26 +6,31 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.view.MenuHost
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.snackbar.Snackbar
+import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.utils.dialogHelper.DialogHelper
 import uz.gxteam.variantmarket.utils.screenNavigate.ScreenNavigate
 import uz.gxteam.variantmarket.utils.uiController.UiController
+import uz.gxteam.variantmarket.viewModels.mainViewModel.MainViewModel
 
 
 class AppCompositionRoot(
     private val activity: AppCompatActivity,
     private val navController: NavController,
     private val owner: LifecycleOwner,
-    private val uiController: UiController
+    private val uiController: UiController,
+    private val mainViewModel: MainViewModel?=null
 ) {
 
     var viewPager2:ViewPager2?=null
-
-
+    val mainViewModelApp:MainViewModel get() = mainViewModel!!
     val lifsycleOwner get() = owner
     val activityApp get() = activity
     val screenNavigate by lazy {
@@ -68,6 +73,9 @@ class AppCompositionRoot(
 
     }
 
+
+
+
     fun drawableColorUpdate(view: View, color:Int){
         val gradientDrawable = GradientDrawable()
         gradientDrawable.shape = GradientDrawable.RECTANGLE
@@ -76,5 +84,21 @@ class AppCompositionRoot(
             ContextCompat.getColor(activity, color)
         )
         view.background = gradientDrawable
+    }
+
+    fun snackBarData(view:View,data:String,cancelClick:()->Unit){
+        Snackbar.make(view, data, Snackbar.LENGTH_SHORT)
+            .setAction(R.string.cancel) {
+                cancelClick.invoke()
+            }
+            .setBackgroundTint(ContextCompat.getColor(activity, R.color.app_background))
+            .setActionTextColor(ContextCompat.getColor(activity, R.color.white)).show()
+    }
+
+    fun toolbarLeftIcon(){
+        if(activity.supportActionBar?.isShowing==false){
+            activityApp.supportActionBar?.show()
+        }
+        activityApp.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_left)
     }
 }

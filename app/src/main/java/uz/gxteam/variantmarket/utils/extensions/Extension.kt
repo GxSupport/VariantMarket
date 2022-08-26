@@ -1,11 +1,15 @@
 package uz.gxteam.variantmarket.utils.extensions
 
+import android.annotation.SuppressLint
 import android.graphics.Color
+import android.icu.text.NumberFormat
+import android.os.Build
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
 import coil.dispose
@@ -16,6 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.BottomSheetDialogBinding
+import java.util.*
 
 fun TextView.textApp(str:String){
     this.text = str
@@ -67,4 +72,11 @@ fun BottomSheetDialog.createData(@LayoutRes layoutRes:Int, onClick:(vb:ViewBindi
         }
     }
     this.show()
+}
+
+
+
+@SuppressLint("NewApi")
+fun Double.format():String {
+    return NumberFormat.getNumberInstance(Locale.getDefault()).format(this)
 }
