@@ -59,6 +59,9 @@ class AdapterGeneric<T:Any>(
             R.layout.favorite_item->{
                 holder.itemView.animation = loadAnimation(holder.itemView)
             }
+            R.layout.item_color->{
+                holder.itemView.animation = loadAnimation(holder.itemView)
+            }
             else->{
 //                val loadAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.anim_view)
 //                holder.itemView.animation = loadAnimation

@@ -15,4 +15,11 @@
         <attr name="hide_text" format="string"/>
         <attr name="show_text" format="string"/>
     </declare-styleable>
+
+    <attr name="bottomNavigationColor" format="reference"/>
+    <attr name="toolbarColor" format="reference"/>
+    <attr name="textColor" format="reference"/>
+    <attr name="app_background" format="reference"/>
+    <attr name="icon_color" format="reference"/>
+    <attr name="hint_color" format="reference"/>
 </resources>

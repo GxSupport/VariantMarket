@@ -46,4 +46,133 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+
+
+    <!--    themes first-->
+    <style name="AppTheme.First" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_first</item>
+        <item name="bottomNavigationColor">@color/theme_first_bottom_navigation</item>
+        <item name="textColor">@color/theme_first_textColor</item>
+        <item name="toolbarColor">@color/theme_first_toolbar</item>
+        <item name="icon_color">@color/theme_first_icon_color</item>
+        <item name="hint_color">@color/theme_first_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes first-->
+    <!--    themes second-->
+    <style name="AppTheme.Second" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_second</item>
+        <item name="bottomNavigationColor">@color/theme_second_bottom_navigation</item>
+        <item name="textColor">@color/theme_second_textColor</item>
+        <item name="toolbarColor">@color/theme_second_toolbar</item>
+        <item name="icon_color">@color/theme_second_icon_color</item>
+        <item name="hint_color">@color/theme_second_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes second-->
+    <!--    themes three-->
+    <style name="AppTheme.Three" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_three</item>
+        <item name="bottomNavigationColor">@color/theme_three_bottom_navigation</item>
+        <item name="textColor">@color/theme_three_textColor</item>
+        <item name="toolbarColor">@color/theme_three_toolbar</item>
+        <item name="icon_color">@color/theme_three_icon_color</item>
+        <item name="hint_color">@color/theme_three_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes three-->
+    <!--    themes four-->
+    <style name="AppTheme.Four" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_four</item>
+        <item name="bottomNavigationColor">@color/theme_four_bottom_navigation</item>
+        <item name="textColor">@color/theme_four_textColor</item>
+        <item name="toolbarColor">@color/theme_four_toolbar</item>
+        <item name="icon_color">@color/theme_four_icon_color</item>
+        <item name="hint_color">@color/theme_four_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes four-->
+    <!--    themes five-->
+    <style name="AppTheme.Five" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_five</item>
+        <item name="bottomNavigationColor">@color/theme_five_bottom_navigation</item>
+        <item name="textColor">@color/theme_five_textColor</item>
+        <item name="toolbarColor">@color/theme_five_toolbar</item>
+        <item name="icon_color">@color/theme_five_icon_color</item>
+        <item name="hint_color">@color/theme_five_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes five-->
+    <!--    themes six-->
+    <style name="AppTheme.Six" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_six</item>
+        <item name="bottomNavigationColor">@color/theme_six_bottom_navigation</item>
+        <item name="textColor">@color/theme_six_textColor</item>
+        <item name="toolbarColor">@color/theme_six_toolbar</item>
+        <item name="icon_color">@color/theme_six_icon_color</item>
+        <item name="hint_color">@color/theme_six_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes six-->
+    <!--    themes seven-->
+    <style name="AppTheme.Seven" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_seven</item>
+        <item name="bottomNavigationColor">@color/theme_seven_bottom_navigation</item>
+        <item name="textColor">@color/theme_seven_textColor</item>
+        <item name="toolbarColor">@color/theme_seven_toolbar</item>
+        <item name="icon_color">@color/theme_seven_icon_color</item>
+        <item name="hint_color">@color/theme_seven_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes seven-->
+    <!--    themes eight-->
+    <style name="AppTheme.Eight" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_eight</item>
+        <item name="bottomNavigationColor">@color/theme_eight_bottom_navigation</item>
+        <item name="textColor">@color/theme_eight_textColor</item>
+        <item name="toolbarColor">@color/theme_eight_toolbar</item>
+        <item name="icon_color">@color/theme_eight_icon_color</item>
+        <item name="hint_color">@color/theme_eight_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes eight-->
+    <!--    themes nine-->
+    <style name="AppTheme.Nine" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="app_background">@color/theme_appBackground_nine</item>
+        <item name="bottomNavigationColor">@color/theme_nine_bottom_navigation</item>
+        <item name="textColor">@color/theme_nine_textColor</item>
+        <item name="toolbarColor">@color/theme_nine_toolbar</item>
+        <item name="icon_color">@color/theme_nine_icon_color</item>
+        <item name="hint_color">@color/theme_nine_hint_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <!--    themes nine-->
+
 </resources>

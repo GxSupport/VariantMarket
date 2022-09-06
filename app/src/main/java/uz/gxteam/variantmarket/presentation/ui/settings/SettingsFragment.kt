@@ -26,6 +26,10 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
               bottomSheetDialog(R.layout.language_dialog,mainViewModel.myShared)
             }
 
+            linearUiTheme.setOnClickListener {
+                bottomSheetDialog(R.layout.theme_style,mainViewModel.myShared)
+            }
+
             val persistedLocale = LocaleManager.getLanguage(requireContext())
             when(persistedLocale?.lowercase()){
                 UZB.lowercase()->{

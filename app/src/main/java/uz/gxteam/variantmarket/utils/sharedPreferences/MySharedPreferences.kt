@@ -13,6 +13,7 @@ import uz.gxteam.variantmarket.utils.AppConstant.REFRESH_TOKEN
 import uz.gxteam.variantmarket.utils.AppConstant.REGISTER_DATA
 import uz.gxteam.variantmarket.utils.AppConstant.REGISTER_DATA_V
 import uz.gxteam.variantmarket.utils.AppConstant.RU
+import uz.gxteam.variantmarket.utils.AppConstant.THEME
 import uz.gxteam.variantmarket.utils.AppConstant.TOKEN_TYPE
 import uz.gxteam.variantmarket.utils.AppConstant.UZB
 import javax.inject.Inject
@@ -79,5 +80,11 @@ class MySharedPreferences @Inject constructor(
         get() = sharedPreferences.getString(LANG, RU)
         set(value) = sharedPreferences.edit{
             if (value!=null) it.putString(LANG,value)
+        }
+    // TODO: theme
+    var theme:Int?
+        get() = sharedPreferences.getInt(THEME,0)
+        set(value) = sharedPreferences.edit{
+            if (value!=null) it.putInt(THEME,value)
         }
 }

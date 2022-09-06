@@ -19,6 +19,7 @@ import uz.gxteam.variantmarket.models.local.orders.Orders
 import uz.gxteam.variantmarket.models.local.searchData.SearchDataAll
 import uz.gxteam.variantmarket.models.local.simpleCategory.Category
 import uz.gxteam.variantmarket.models.local.sliderData.Filial
+import uz.gxteam.variantmarket.models.local.theme.ThemeModel
 import uz.gxteam.variantmarket.utils.AppConstant
 import uz.gxteam.variantmarket.utils.extensions.*
 
@@ -26,6 +27,14 @@ import uz.gxteam.variantmarket.utils.extensions.*
 open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemView),Holder<T>{
     override fun onBind(item: T, position: Int, layoutRes: Int,clickPos:Int,onClikc:(T,position:Int)->Unit) {
         when(layoutRes){
+            R.layout.item_color->{
+                val binding = ItemColorBinding.bind(itemView)
+                val themeModel = item as ThemeModel
+                binding.cardColor.setCardBackgroundColor(themeModel.color)
+                binding.cardColor.setOnClickListener {
+                    onClikc.invoke(item,position)
+                }
+            }
 
             R.layout.favorite_item->{
                 val binding = FavoriteItemBinding.bind(itemView)

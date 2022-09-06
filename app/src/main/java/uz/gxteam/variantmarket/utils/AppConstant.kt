@@ -6,6 +6,7 @@ object AppConstant {
     const val EMPTYTEXT = ""
     const val ACCESS_TOKEN = "access_token"
     const val LANG = "language"
+    const val THEME = "theme"
     const val EMPTY = ""
     const val REFRESH_TOKEN = "refresh_token"
     const val TOKEN_TYPE = "token_type"

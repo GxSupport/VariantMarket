@@ -26,8 +26,8 @@ class ScreenNavigate(
     }
 
     fun createDataProductInFavorites(){
-        navController.navigate(R.id.action_favorites_to_dataProductFragment,
-            Bundle(),animationViewCreatebottom())
+        navController.navigate(R.id.dataProductFragment,
+            Bundle(),animationViewCreateRight())
     }
 
     fun createDataProduct(){
