@@ -1,13 +1,13 @@
 package uz.gxteam.variantmarket.presentation.ui.splashScreen
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.navigation.fragment.findNavController
+import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.FragmentSplashBinding
-import uz.gxteam.variantmarket.presentation.activitys.MainActivity
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
@@ -36,8 +36,9 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
                 override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
                     Handler(Looper.getMainLooper()).postDelayed({
-                        startActivity(Intent(requireContext(), MainActivity::class.java))
-                        requireActivity().finish()
+                        findNavController().navigate(R.id.action_splashFragment_to_authFragment)
+//                        appCompositionRoot.activityApp.startNewActivity(MainActivity::class.java)
+//                        appCompositionRoot.activityApp.finish()
                     },1200)
                 }
 

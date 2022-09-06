@@ -1,6 +1,7 @@
 package uz.gxteam.variantmarket.presentation.activitys
 
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -17,12 +18,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ActivityMainBinding
 import uz.gxteam.variantmarket.utils.composition.AppCompositionRoot
+import uz.gxteam.variantmarket.utils.language.LocaleManager
 import uz.gxteam.variantmarket.utils.uiController.UiController
 import uz.gxteam.variantmarket.viewModels.mainViewModel.MainViewModel
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(),UiController {
-    private lateinit var binding:ActivityMainBinding
+    lateinit var binding:ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val mainViewModel:MainViewModel by viewModels()
     lateinit var appCompositionRoot:AppCompositionRoot
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity(),UiController {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
+
         val navControllerApp = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         appCompositionRoot = AppCompositionRoot(this,navControllerApp.navController,this,this,mainViewModel)
 
@@ -43,7 +46,10 @@ class MainActivity : AppCompatActivity(),UiController {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home,R.id.category,R.id.orders,R.id.bankCard), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.nav_home,R.id.category,R.id.orders,
+                R.id.bankCard,R.id.favorites,R.id.questions,
+                R.id.terms,R.id.settings), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -61,6 +67,18 @@ class MainActivity : AppCompatActivity(),UiController {
                    supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
                }
                R.id.bankCard->{
+                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
+               }
+               R.id.favorites->{
+                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
+               }
+               R.id.questions->{
+                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
+               }
+               R.id.terms->{
+                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
+               }
+               R.id.settings->{
                    supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
                }
                R.id.searchedDataFragment->{
@@ -82,21 +100,25 @@ class MainActivity : AppCompatActivity(),UiController {
     }
 
     override fun showLoading() {
-
+        appCompositionRoot.loadingDialog(true)
     }
 
     override fun hideLoading() {
-
+        appCompositionRoot.loadingDialog(false)
     }
 
-    override fun error(errorCode: Int, message: String) {
-
+    override fun error(errorCode: Int, message: String,onClick:(idsClick:Boolean)->Unit) {
+        appCompositionRoot.errorDialog(errorCode,message,onClick)
     }
 
     fun toolbarTitle(title:String){
         binding.appBarMain.toolbar.title = title
     }
 
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleManager.setLocale(newBase));
+    }
 
 
 }

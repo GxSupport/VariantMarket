@@ -12,7 +12,7 @@ import coil.transform.RoundedCornersTransformation
 import com.github.hariprasanths.bounceview.BounceView
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ItemDiscountBinding
-import uz.gxteam.variantmarket.models.discount.Discount
+import uz.gxteam.variantmarket.models.local.discount.Discount
 import uz.gxteam.variantmarket.utils.AppConstant.CROSSFADE
 
 class DiscountAdapter(var onItemClickListener: OnItemClickListener):ListAdapter<Discount,DiscountAdapter.Vh>(MyDiffUtill()) {

@@ -12,15 +12,15 @@ import androidx.viewbinding.ViewBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.models.allM.AllData
-import uz.gxteam.variantmarket.models.allM.CategoryAll
-import uz.gxteam.variantmarket.models.discount.Discount
-import uz.gxteam.variantmarket.models.filter.FilterData
-import uz.gxteam.variantmarket.models.history.History
-import uz.gxteam.variantmarket.models.newsData.NewsData
-import uz.gxteam.variantmarket.models.orders.Orders
-import uz.gxteam.variantmarket.models.searchData.SearchDataAll
-import uz.gxteam.variantmarket.models.simpleSlide.SlideData
+import uz.gxteam.variantmarket.models.local.allM.AllData
+import uz.gxteam.variantmarket.models.local.allM.CategoryAll
+import uz.gxteam.variantmarket.models.local.discount.Discount
+import uz.gxteam.variantmarket.models.local.filter.FilterData
+import uz.gxteam.variantmarket.models.local.history.History
+import uz.gxteam.variantmarket.models.local.newsData.NewsData
+import uz.gxteam.variantmarket.models.local.orders.Orders
+import uz.gxteam.variantmarket.models.local.searchData.SearchDataAll
+import uz.gxteam.variantmarket.models.local.simpleSlide.SlideData
 import uz.gxteam.variantmarket.presentation.activitys.AuthActivity
 import uz.gxteam.variantmarket.presentation.activitys.MainActivity
 import java.lang.reflect.ParameterizedType
@@ -68,11 +68,24 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment(),CoroutineScope {
     }
 
 
+    fun removeMenuHome(){
+        (activity as MainActivity).binding.appBarMain.toolbar.menu.removeItem(R.id.nav_home)
+        (activity as MainActivity).binding.appBarMain.toolbar.menu.removeItem(R.id.nav_gallery)
+    }
 
+
+
+    fun menuIconHome(){
+        (activity as MainActivity).supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_main_menu)
+    }
 
 
     fun toolbarLeftIcon(){
         appCompositionRoot.activityApp.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+    }
+
+    fun toolbarShow(){
+        (activity as MainActivity).supportActionBar?.show()
     }
 
     private lateinit var slideList:ArrayList<SlideData>

@@ -4,13 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.github.hariprasanths.bounceview.BounceView
-import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ItemSlideBinding
-import uz.gxteam.variantmarket.models.simpleSlide.SlideData
+import uz.gxteam.variantmarket.models.local.simpleSlide.SlideData
 import uz.gxteam.variantmarket.utils.extensions.dataImage
-import uz.gxteam.variantmarket.utils.extensions.gone
 
 class AdvertisingAdapter(var listSlide:ArrayList<SlideData>,var onItemClickListener: OnItemClikcListener):RecyclerView.Adapter<AdvertisingAdapter.Vh>() {
     inner class Vh(var itemSlideBinding: ItemSlideBinding):RecyclerView.ViewHolder(itemSlideBinding.root){

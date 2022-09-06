@@ -6,10 +6,9 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ItemMainBinding
-import uz.gxteam.variantmarket.models.allM.AllData
-import uz.gxteam.variantmarket.models.allM.CategoryAll
+import uz.gxteam.variantmarket.models.local.allM.AllData
+import uz.gxteam.variantmarket.models.local.allM.CategoryAll
 import uz.gxteam.variantmarket.utils.AppConstant.CLIPCHILDREN
 import uz.gxteam.variantmarket.utils.AppConstant.CLIPTOPADDING
 

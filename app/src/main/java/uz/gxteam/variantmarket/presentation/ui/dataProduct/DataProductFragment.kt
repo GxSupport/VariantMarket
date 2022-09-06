@@ -1,21 +1,16 @@
 package uz.gxteam.variantmarket.presentation.ui.dataProduct
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.adapters.infoProduct.InfoProductAdapter
 import uz.gxteam.variantmarket.databinding.FragmentDataProductBinding
-import uz.gxteam.variantmarket.models.sliderData.Filial
-import uz.gxteam.variantmarket.models.sliderData.InfoData
-import uz.gxteam.variantmarket.models.sliderData.InfoProduct
-import uz.gxteam.variantmarket.models.sliderData.SlideData
+import uz.gxteam.variantmarket.models.local.sliderData.Filial
+import uz.gxteam.variantmarket.models.local.sliderData.InfoData
+import uz.gxteam.variantmarket.models.local.sliderData.InfoProduct
+import uz.gxteam.variantmarket.models.local.sliderData.SlideData
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
-import uz.gxteam.variantmarket.utils.extensions.gone
 import uz.gxteam.variantmarket.utils.extensions.textApp
-import uz.gxteam.variantmarket.utils.extensions.visible
 
 
 class DataProductFragment : BaseFragment<FragmentDataProductBinding>() {

@@ -44,14 +44,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                             bottomNavigation.menu.findItem(R.id.nav_gallery).isChecked = true
                         }
                         TWO->{
-                            bottomNavigation.menu.findItem(R.id.nav_home1).isChecked = true
+                            bottomNavigation.menu.findItem(R.id.nav_gallery1).isChecked = true
                         }
                         THREE->{
-                            bottomNavigation.menu.findItem(R.id.nav_gallery1).isChecked = true
+                            bottomNavigation.menu.findItem(R.id.nav_home1).isChecked = true
                         }
                     }
                 }
             })
+
             bottomNavigation.setOnItemSelectedListener {
                 when(it.itemId){
                     R.id.nav_home->{
@@ -63,11 +64,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         toolbarTitle(appCompositionRoot.activityApp.getString(R.string.category))
                     }
                     R.id.nav_home1->{
-                        viewPager2.currentItem = TWO
+                        viewPager2.currentItem = THREE
                         toolbarTitle(appCompositionRoot.activityApp.getString(R.string.orders))
                     }
                     R.id.nav_gallery1->{
-                        viewPager2.currentItem = THREE
+                        viewPager2.currentItem = TWO
                         toolbarTitle(appCompositionRoot.activityApp.getString(R.string.profil))
                     }
                 }
@@ -79,6 +80,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
     override fun start(savedInstanceState: Bundle?) {
+
     }
 
 

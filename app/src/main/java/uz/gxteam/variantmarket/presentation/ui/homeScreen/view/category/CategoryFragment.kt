@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.categoryAdapter.CategoryAdapter
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentCategoryBinding
-import uz.gxteam.variantmarket.models.cateGoryData.CateGoryData
-import uz.gxteam.variantmarket.models.simpleCategory.Category
+import uz.gxteam.variantmarket.models.local.cateGoryData.CateGoryData
+import uz.gxteam.variantmarket.models.local.simpleCategory.Category
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 import uz.gxteam.variantmarket.utils.AppConstant.OB_POS
 import uz.gxteam.variantmarket.utils.extensions.gone

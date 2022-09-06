@@ -3,6 +3,7 @@ package uz.gxteam.variantmarket.adapters.viewPagerAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import uz.gxteam.variantmarket.presentation.ui.favorites.FavoritesFragment
 import uz.gxteam.variantmarket.presentation.ui.homeScreen.view.MainScreenFragment
 import uz.gxteam.variantmarket.presentation.ui.homeScreen.view.category.CategoryFragment
 import uz.gxteam.variantmarket.presentation.ui.homeScreen.view.orders.OrdersFragment
@@ -27,10 +28,11 @@ class SlideAdapter(fragmentActivity:FragmentActivity):FragmentStateAdapter(fragm
                 CategoryFragment()
             }
             TWO->{
-                OrdersFragment()
+                FavoritesFragment()
             }
             THREE->{
-                ProfilFragment()
+                OrdersFragment()
+               // ProfilFragment()
             }
            else -> {
                MainScreenFragment()

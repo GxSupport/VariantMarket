@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:ms9_shadowTranslationZ="5dp"
+        app:ms9_shadowElevation="0.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:transitionName="card_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:outlineProvider="bounds"
+            android:layout_marginHorizontal="@dimen/_3sdp"
+            android:outlineAmbientShadowColor="@color/app_background_hint"
+            android:outlineSpotShadowColor="@color/app_background_hint"
+            app:cardCornerRadius="@dimen/_7sdp"
+            app:cardElevation="@dimen/_3sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:targetApi="p">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:paddingBottom="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/image"
+                    android:src="@drawable/a53"
+                    android:scaleType="centerInside"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_discount"
+                    android:visibility="visible"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardBackgroundColor="@color/discount_color_pr"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:cardElevation="0dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintVertical_bias="0.03"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:paddingHorizontal="@dimen/_4sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/icon_delivery"
+                            android:src="@drawable/ic_delivery"
+                            android:layout_width="@dimen/_13sdp"
+                            android:layout_height="@dimen/_13sdp"/>
+                        <TextView
+                            android:id="@+id/text_discount"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:textStyle="normal"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/inter_medium"
+                            android:gravity="center"
+                            android:text="15 % chegirma"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:cardElevation="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    app:layout_constraintLeft_toRightOf="@id/card_discount"
+                    app:layout_constraintTop_toTopOf="@id/card_discount"
+                    app:cardCornerRadius="@dimen/_12sdp"
+                    app:layout_constraintHorizontal_bias="0.95"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp">
+                    <ImageView
+                        android:id="@+id/like_image"
+                        android:padding="@dimen/_4sdp"
+                        android:src="@drawable/ic_like_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:id="@+id/text_product"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/inter_medium"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintTop_toBottomOf="@id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:id="@+id/line_view"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    app:layout_constraintTop_toBottomOf="@id/text_product"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/text_gray_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/line_view"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/month_summ_hint"
+                            android:textStyle="normal"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/hintColor"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="12 oyga "
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <View
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                        <TextView
+                            android:id="@+id/month_summa"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_9sdp"
+                            android:textStyle="normal"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="238 000 so'm"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/product_summa_hint"
+                            android:textStyle="normal"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/hintColor"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="@string/product_summa_hint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <View
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                        <TextView
+                            android:id="@+id/product_summa"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_9sdp"
+                            android:textStyle="normal"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="4 000 000 so'm"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+                    <!--                        android:layout_marginHorizontal="@dimen/_10sdp"-->
+                    <!--                        android:layout_marginTop="@dimen/_8sdp"-->
+                    <!--                        android:orientation="horizontal"-->
+                    <!--                        android:background="@drawable/button_style"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="@dimen/_25sdp">-->
+                    <!--                        <androidx.appcompat.widget.AppCompatButton-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:textSize="@dimen/_12sdp"-->
+                    <!--                            android:textStyle="normal"-->
+                    <!--                            android:textColor="@color/app_background"-->
+                    <!--                            android:text="@string/plus"-->
+                    <!--                            android:background="@android:color/transparent"-->
+                    <!--                            android:layout_marginBottom="@dimen/_2sdp"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="match_parent"/>-->
+                    <!--                        <View-->
+                    <!--                            android:background="@color/app_background"-->
+                    <!--                            android:layout_width="1dp"-->
+                    <!--                            android:layout_height="match_parent"/>-->
+                    <!--                        <androidx.appcompat.widget.AppCompatButton-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:textSize="@dimen/_12sdp"-->
+                    <!--                            android:textStyle="normal"-->
+                    <!--                            android:textColor="@color/app_background"-->
+                    <!--                            android:text="@string/minus"-->
+                    <!--                            android:background="@android:color/transparent"-->
+                    <!--                            android:layout_marginBottom="@dimen/_2sdp"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="match_parent"/>-->
+                    <!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,10 @@
 package uz.gxteam.variantmarket.presentation.ui.create_card
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.FragmentCardItemDataBinding
-import uz.gxteam.variantmarket.models.cardData.saveCard.SaveCard
+import uz.gxteam.variantmarket.models.local.cardData.saveCard.SaveCard
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 import uz.gxteam.variantmarket.utils.extensions.textApp
 

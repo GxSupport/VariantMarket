@@ -14,9 +14,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.widget.ViewPager2
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.adapterAll.AllItemAdapter
@@ -24,15 +22,14 @@ import uz.gxteam.variantmarket.adapters.advertising.AdvertisingAdapter
 import uz.gxteam.variantmarket.adapters.discount.DiscountAdapter
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentMainScreenBinding
-import uz.gxteam.variantmarket.models.allM.AllData
-import uz.gxteam.variantmarket.models.allM.CategoryAll
-import uz.gxteam.variantmarket.models.discount.Discount
-import uz.gxteam.variantmarket.models.newsData.NewsData
-import uz.gxteam.variantmarket.models.simpleCategory.Category
-import uz.gxteam.variantmarket.models.simpleSlide.SlideData
+import uz.gxteam.variantmarket.models.local.allM.AllData
+import uz.gxteam.variantmarket.models.local.allM.CategoryAll
+import uz.gxteam.variantmarket.models.local.discount.Discount
+import uz.gxteam.variantmarket.models.local.newsData.NewsData
+import uz.gxteam.variantmarket.models.local.simpleCategory.Category
+import uz.gxteam.variantmarket.models.local.simpleSlide.SlideData
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 import uz.gxteam.variantmarket.utils.AppConstant.DISCOUNT_POS
-import uz.gxteam.variantmarket.utils.AppConstant.OB_POS
 import uz.gxteam.variantmarket.utils.AppConstant.PRODUCT_CATEGORY
 
 class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvider {
@@ -111,7 +108,7 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
             // categoryAdapter
             // TODO:  categoryAdapter
             categoryAdapter = AdapterGeneric(R.layout.item_category,listCategory){category, position ->
-              appCompositionRoot.screenNavigate.createContainerProduct(category.name,OB_POS)
+              appCompositionRoot.screenNavigate.createDataProductFragment(category.name,position)
             }
             rvCategory.adapter = categoryAdapter
             // advertisingAdapter

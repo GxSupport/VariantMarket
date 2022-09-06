@@ -12,11 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.adapters.viewPagerAdapter.CardAdapter
 import uz.gxteam.variantmarket.databinding.FragmentCreateCardBinding
-import uz.gxteam.variantmarket.models.cardData.plasticCard.BankCard
-import uz.gxteam.variantmarket.models.cardData.saveCard.SaveCard
+import uz.gxteam.variantmarket.models.local.cardData.saveCard.SaveCard
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 
 @AndroidEntryPoint
@@ -24,8 +22,11 @@ class CreateCardFragment : BaseFragment<FragmentCreateCardBinding>() {
     private lateinit var cardAdapter: CardAdapter
     override fun setup(savedInstanceState: Bundle?) {
         binding.apply {
+            removeMenuHome()
+
             toolbarLeftIcon()
             cardNumber()
+            // TODO: Default value card Data
             var saveCard = SaveCard("-----------------------","0000 0000 0000 0000","00/00",0,"-----------------")
             appCompositionRoot.mainViewModelApp.setValuePos(saveCard)
             createCardHolder(saveCard)

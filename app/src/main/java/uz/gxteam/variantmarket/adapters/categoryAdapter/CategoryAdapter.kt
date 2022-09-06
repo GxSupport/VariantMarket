@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ItemCategoryBinding
-import uz.gxteam.variantmarket.models.simpleCategory.Category
+import uz.gxteam.variantmarket.models.local.simpleCategory.Category
 
 
 class CategoryAdapter:ListAdapter<Category,CategoryAdapter.Vh>(MyDiffUtill()) {

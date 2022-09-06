@@ -13,10 +13,19 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/app_background</item>
         <!-- Customize your theme here. -->
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:navigationBarColor">@color/app_background</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="colorPrimaryInverse">@color/white</item>
         <item name="colorOnSurfaceInverse">@color/white</item>
     </style>
+
+    <style name="splashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/app_background</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/app_background</item>
+        <item name="android:navigationBarColor">@color/app_background</item>
+    </style>
+
+
 
     <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
         <item name="cornerSize">50%</item>
@@ -48,7 +57,10 @@
     </style>
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
     </style>
+
+
 
     <style name="CustomCheckbox02" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:button">@drawable/check_box</item>

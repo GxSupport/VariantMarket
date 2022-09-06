@@ -104,4 +104,28 @@
         android:name="uz.gxteam.variantmarket.presentation.ui.create_card.CreateCardFragment"
         android:label="@string/create_card"
         tools:layout="@layout/fragment_create_card" />
+    <fragment
+        android:id="@+id/favorites"
+        android:name="uz.gxteam.variantmarket.presentation.ui.favorites.FavoritesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favorites_to_dataProductFragment"
+            app:destination="@id/dataProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questions"
+        android:name="uz.gxteam.variantmarket.presentation.ui.questions.QuestionsFragment"
+        android:label="@string/questions"
+        tools:layout="@layout/fragment_questions" />
+    <fragment
+        android:id="@+id/terms"
+        android:name="uz.gxteam.variantmarket.presentation.ui.terms_of_use.TermsOfUseFragment"
+        android:label="@string/terms"
+        tools:layout="@layout/fragment_terms_of_use" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="uz.gxteam.variantmarket.presentation.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

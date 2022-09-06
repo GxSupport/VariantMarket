@@ -15,20 +15,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.VariantMarket"
+        android:theme="@style/splashTheme"
         tools:targetApi="31">
         <activity
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/splashTheme"
             android:name=".presentation.activitys.AuthActivity"
             android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".presentation.activitys.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.VariantMarket"
+            android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presentation.activitys.MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan|adjustResize"/>
     </application>
 
 </manifest>

@@ -9,7 +9,14 @@
         android:id="@+id/authFragment"
         android:name="uz.gxteam.variantmarket.presentation.ui.authScreen.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" />
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_authFragment_to_passwordResetFragment"
+            app:destination="@id/passwordResetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="uz.gxteam.variantmarket.presentation.ui.splashScreen.SplashFragment"
@@ -19,4 +26,23 @@
             android:id="@+id/action_splashFragment_to_authFragment"
             app:destination="@id/authFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.register.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_confirmUserFragment"
+            app:destination="@id/confirmUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmUserFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.register.confirmUser.ConfirmUserFragment"
+        android:label="fragment_confirm_user"
+        tools:layout="@layout/fragment_confirm_user" />
+    <fragment
+        android:id="@+id/passwordResetFragment"
+        android:name="uz.gxteam.variantmarket.presentation.ui.password_reset.PasswordResetFragment"
+        android:label="fragment_password_reset"
+        tools:layout="@layout/fragment_password_reset" />
 </navigation>

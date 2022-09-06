@@ -56,6 +56,9 @@ class AdapterGeneric<T:Any>(
             R.layout.bank_card->{
                 holder.itemView.animation = AnimationUtils.loadAnimation(holder.itemView.context,R.anim.anim_view)
             }
+            R.layout.favorite_item->{
+                holder.itemView.animation = loadAnimation(holder.itemView)
+            }
             else->{
 //                val loadAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.anim_view)
 //                holder.itemView.animation = loadAnimation

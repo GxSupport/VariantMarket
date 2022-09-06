@@ -12,7 +12,7 @@ import coil.transform.RoundedCornersTransformation
 import com.github.hariprasanths.bounceview.BounceView
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ItemAllChildBinding
-import uz.gxteam.variantmarket.models.allM.AllData
+import uz.gxteam.variantmarket.models.local.allM.AllData
 import uz.gxteam.variantmarket.utils.AppConstant.CHILD_ITEM_IMAGE_RAD
 import uz.gxteam.variantmarket.utils.AppConstant.CROSSFADE
 import uz.gxteam.variantmarket.utils.AppConstant.CROSSFADE_BOOL

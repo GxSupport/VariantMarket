@@ -10,10 +10,9 @@ import androidx.viewpager2.widget.ViewPager2
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentCardBinding
-import uz.gxteam.variantmarket.models.cardData.plasticCard.BankCard
-import uz.gxteam.variantmarket.models.history.History
+import uz.gxteam.variantmarket.models.local.cardData.plasticCard.BankCard
+import uz.gxteam.variantmarket.models.local.history.History
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
-import java.lang.Math.abs
 
 
 class CardFragment : BaseFragment<FragmentCardBinding>() {
@@ -21,6 +20,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
     private lateinit var adapterHistory:AdapterGeneric<History>
     override fun setup(savedInstanceState: Bundle?) {
         binding.apply {
+
             createCardHolder()
             cardBank.setOnClickListener {
                 appCompositionRoot.screenNavigate.createSaveCardUser()
@@ -90,4 +90,5 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
             outRect.left = horizontalMarginInPx
         }
     }
+
 }

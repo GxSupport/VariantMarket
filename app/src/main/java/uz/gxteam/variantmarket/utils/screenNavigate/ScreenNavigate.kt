@@ -4,10 +4,19 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import uz.gxteam.variantmarket.R
+import uz.gxteam.variantmarket.models.register.reqRegister.ReqRegister
+import uz.gxteam.variantmarket.models.register.resRegister.ResponseRegisterData
+import uz.gxteam.variantmarket.utils.AppConstant.REQUEST_REGISTER
+import uz.gxteam.variantmarket.utils.AppConstant.RESPONSE_REGISTER_DATA
 
 class ScreenNavigate(
     private val navController: NavController
 ) {
+
+
+    fun createAuthPage(){
+        navController.navigate(R.id.action_splashFragment_to_authFragment)
+    }
 
 
     fun createSearchDataViewInSearchView(search:String){
@@ -16,6 +25,10 @@ class ScreenNavigate(
         navController.navigate(R.id.action_searchFragment_to_searchedDataFragment,bundle,animationViewCreateRight())
     }
 
+    fun createDataProductInFavorites(){
+        navController.navigate(R.id.action_favorites_to_dataProductFragment,
+            Bundle(),animationViewCreatebottom())
+    }
 
     fun createDataProduct(){
         navController.navigate(R.id.action_searchedDataFragment_to_dataProductFragment,
@@ -56,8 +69,25 @@ class ScreenNavigate(
         navController.navigate(R.id.action_bankCard_to_createCardFragment,Bundle(),animationViewCreateRight())
     }
 
+
+    fun createRegistrationPage(){
+        navController.navigate(R.id.action_authFragment_to_registrationFragment, Bundle(),animationViewCreateRight())
+    }
+
+    fun createConfirmPage(
+        responseRegisterData: ResponseRegisterData,
+        reqRegister: ReqRegister){
+        val bundle = Bundle()
+        bundle.putSerializable(RESPONSE_REGISTER_DATA,responseRegisterData)
+        bundle.putSerializable(REQUEST_REGISTER,reqRegister)
+        navController.navigate(R.id.action_registrationFragment_to_confirmUserFragment, bundle,animationViewCreateRight())
+    }
     fun popBackStack(){
         navController.popBackStack()
+    }
+
+    fun createNewPasswordPage(){
+        navController.navigate(R.id.action_authFragment_to_passwordResetFragment,Bundle(),animationViewCreateRight())
     }
 
 

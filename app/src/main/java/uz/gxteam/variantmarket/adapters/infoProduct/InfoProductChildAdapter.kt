@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import uz.gxteam.variantmarket.databinding.ItemCharChildBinding
-import uz.gxteam.variantmarket.models.sliderData.InfoProduct
+import uz.gxteam.variantmarket.models.local.sliderData.InfoProduct
 import uz.gxteam.variantmarket.utils.extensions.textApp
 
 class InfoProductChildAdapter(

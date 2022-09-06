@@ -1,15 +1,10 @@
 package uz.gxteam.variantmarket.presentation.ui.productViewPagerPage
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentProductDataBinding
-import uz.gxteam.variantmarket.models.newsData.NewsData
+import uz.gxteam.variantmarket.models.local.newsData.NewsData
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 
 private const val ARG_PARAM1 = "param1"

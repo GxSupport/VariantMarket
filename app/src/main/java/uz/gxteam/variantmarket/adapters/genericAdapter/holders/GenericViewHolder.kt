@@ -11,14 +11,14 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.*
-import uz.gxteam.variantmarket.models.cardData.plasticCard.BankCard
-import uz.gxteam.variantmarket.models.cateGoryData.CateGoryData
-import uz.gxteam.variantmarket.models.filter.FilterData
-import uz.gxteam.variantmarket.models.newsData.NewsData
-import uz.gxteam.variantmarket.models.orders.Orders
-import uz.gxteam.variantmarket.models.searchData.SearchDataAll
-import uz.gxteam.variantmarket.models.simpleCategory.Category
-import uz.gxteam.variantmarket.models.sliderData.Filial
+import uz.gxteam.variantmarket.models.local.cardData.plasticCard.BankCard
+import uz.gxteam.variantmarket.models.local.cateGoryData.CateGoryData
+import uz.gxteam.variantmarket.models.local.filter.FilterData
+import uz.gxteam.variantmarket.models.local.newsData.NewsData
+import uz.gxteam.variantmarket.models.local.orders.Orders
+import uz.gxteam.variantmarket.models.local.searchData.SearchDataAll
+import uz.gxteam.variantmarket.models.local.simpleCategory.Category
+import uz.gxteam.variantmarket.models.local.sliderData.Filial
 import uz.gxteam.variantmarket.utils.AppConstant
 import uz.gxteam.variantmarket.utils.extensions.*
 
@@ -26,6 +26,15 @@ import uz.gxteam.variantmarket.utils.extensions.*
 open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemView),Holder<T>{
     override fun onBind(item: T, position: Int, layoutRes: Int,clickPos:Int,onClikc:(T,position:Int)->Unit) {
         when(layoutRes){
+
+            R.layout.favorite_item->{
+                val binding = FavoriteItemBinding.bind(itemView)
+                val newsData = item as NewsData
+                binding.card.setOnClickListener {
+                    onClikc.invoke(newsData as T,position)
+                }
+            }
+
             R.layout.bank_card->{
                 val binding = BankCardBinding.bind(itemView)
                 val bankCard = item as BankCard
