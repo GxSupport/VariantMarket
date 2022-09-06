@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -17,7 +19,10 @@ import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ActivityMainBinding
+import uz.gxteam.variantmarket.utils.AppConstant
 import uz.gxteam.variantmarket.utils.composition.AppCompositionRoot
+import uz.gxteam.variantmarket.utils.extensions.gone
+import uz.gxteam.variantmarket.utils.extensions.visible
 import uz.gxteam.variantmarket.utils.language.LocaleManager
 import uz.gxteam.variantmarket.utils.uiController.UiController
 import uz.gxteam.variantmarket.viewModels.mainViewModel.MainViewModel
@@ -30,9 +35,14 @@ class MainActivity : AppCompatActivity(),UiController {
     lateinit var appCompositionRoot:AppCompositionRoot
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (mainViewModel.myShared.theme == true){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.appBarMain.toolbar)
+        setSupportActionBar(binding.appBarMain.toolbarApp)
 
         val navControllerApp = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         appCompositionRoot = AppCompositionRoot(this,navControllerApp.navController,this,this,mainViewModel)
@@ -46,6 +56,7 @@ class MainActivity : AppCompatActivity(),UiController {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        binding.appBarMain.include1.bottomNavigation.setupWithNavController(navController)
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.nav_home,R.id.category,R.id.orders,
                 R.id.bankCard,R.id.favorites,R.id.questions,
@@ -53,8 +64,16 @@ class MainActivity : AppCompatActivity(),UiController {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if (controller.currentDestination?.id==R.id.nav_home ||
+                controller.currentDestination?.id == R.id.favorites ||
+                controller.currentDestination?.id == R.id.orders ||
+                 controller.currentDestination?.id==R.id.category){
+                binding.appBarMain.include1.bottomNavigation.visible()
+            }else{
+                binding.appBarMain.include1.bottomNavigation.gone()
+            }
+
            when(controller.currentDestination?.id){
                R.id.nav_home->{
                    supportActionBar?.show()
@@ -94,6 +113,10 @@ class MainActivity : AppCompatActivity(),UiController {
         }
     }
 
+
+    fun getColorActivity(color:Int):Int{
+       return ContextCompat.getColor(this,color)
+    }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
@@ -112,7 +135,7 @@ class MainActivity : AppCompatActivity(),UiController {
     }
 
     fun toolbarTitle(title:String){
-        binding.appBarMain.toolbar.title = title
+        binding.appBarMain.toolbarApp.title = title
     }
 
 

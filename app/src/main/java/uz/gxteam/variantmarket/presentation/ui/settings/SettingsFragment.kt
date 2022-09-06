@@ -1,6 +1,7 @@
 package uz.gxteam.variantmarket.presentation.ui.settings
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
@@ -25,9 +26,25 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             language.setOnClickListener {
               bottomSheetDialog(R.layout.language_dialog,mainViewModel.myShared)
             }
-
+            switchApp.isChecked = mainViewModel.myShared.theme?:false
             linearUiTheme.setOnClickListener {
-                bottomSheetDialog(R.layout.theme_style,mainViewModel.myShared)
+                if (switchApp.isChecked){
+                    mainViewModel.myShared.theme = true
+                    switchApp.isChecked = false
+                }else{
+                    switchApp.isChecked = true
+                    mainViewModel.myShared.theme = false
+                }
+            }
+
+            switchApp.setOnCheckedChangeListener { compoundButton, b ->
+                if (b){
+                    mainViewModel.myShared.theme = true
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }else{
+                    mainViewModel.myShared.theme = false
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
             }
 
             val persistedLocale = LocaleManager.getLanguage(requireContext())

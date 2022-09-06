@@ -6,24 +6,6 @@
     app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="uz.gxteam.variantmarket.presentation.ui.homeScreen.HomeFragment"
-        android:label="@string/mainPage"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_nav_home_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_nav_home_to_searchedDataFragment"
-            app:destination="@id/searchedDataFragment" />
-        <action
-            android:id="@+id/action_nav_home_to_dataProductFragment"
-            app:destination="@id/dataProductFragment" />
-        <action
-            android:id="@+id/action_nav_home_to_categoryDataFragment"
-            app:destination="@id/categoryDataFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/searchFragment"
         android:name="uz.gxteam.variantmarket.presentation.ui.searchView.SearchFragment"
         android:label="@string/search_cat"
@@ -128,4 +110,22 @@
         android:name="uz.gxteam.variantmarket.presentation.ui.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="uz.gxteam.variantmarket.presentation.ui.homeScreen.view.MainScreenFragment"
+        android:label="@string/mainPage"
+        tools:layout="@layout/fragment_main_screen" >
+        <action
+            android:id="@+id/action_nav_home_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_searchedDataFragment"
+            app:destination="@id/searchedDataFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_categoryDataFragment"
+            app:destination="@id/categoryDataFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_dataProductFragment"
+            app:destination="@id/dataProductFragment" />
+    </fragment>
 </navigation>

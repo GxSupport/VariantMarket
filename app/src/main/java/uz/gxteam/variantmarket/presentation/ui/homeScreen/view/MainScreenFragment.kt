@@ -12,9 +12,12 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.widget.ViewPager2
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.adapterAll.AllItemAdapter
@@ -31,7 +34,9 @@ import uz.gxteam.variantmarket.models.local.simpleSlide.SlideData
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 import uz.gxteam.variantmarket.utils.AppConstant.DISCOUNT_POS
 import uz.gxteam.variantmarket.utils.AppConstant.PRODUCT_CATEGORY
+import uz.gxteam.variantmarket.viewModels.mainViewModel.MainViewModel
 
+@AndroidEntryPoint
 class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvider {
     private lateinit var listCategory:ArrayList<Category>
     private lateinit var advertisingAdapter:AdvertisingAdapter
@@ -39,18 +44,17 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
     private lateinit var allItemAdapter: AllItemAdapter
     private lateinit var categoryAdapter:AdapterGeneric<Category>
     private lateinit var adapterGenericNews:AdapterGeneric<NewsData>
-
     override fun setup(savedInstanceState: Bundle?) {
         binding.apply {
             val loadAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_view)
             startShimmer()
 
-            Handler(Looper.getMainLooper()).postDelayed({
-                stopShimmer()
-                createView()
-                // TODO: Animation Mainiew
-                generateAnimation(loadAnimation)
-            },2000)
+//            Handler(Looper.getMainLooper()).postDelayed({
+//                stopShimmer()
+//                createView()
+//                // TODO: Animation Mainiew
+//                generateAnimation(loadAnimation)
+//            },2000)
 
 
             swipeRefresh.setOnRefreshListener {
@@ -65,11 +69,7 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
                 },1500)
             }
             viewGenerate(loadAnimation)
-            categoryTableView.setOnClickListener {
-                if (appCompositionRoot.viewPager2!=null){
-                    appCompositionRoot.viewPager2?.setCurrentItem(1,false)
-                }
-            }
+
 
             categoryTableView1.setOnClickListener {
                 appCompositionRoot.screenNavigate.createContainerProduct("Chegirma elon qilingan mahsulotlar",DISCOUNT_POS)
@@ -81,12 +81,6 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
         loadCategoryData()
     }
 
-
-    override fun onResume() {
-        super.onResume()
-        val menuHost: MenuHost = appCompositionRoot.activityApp
-        menuHost.addMenuProvider(this,viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
 
 
 
@@ -119,25 +113,43 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
             })
             viewPager2.adapter = advertisingAdapter
             springDotsIndicator.attachTo(viewPager2)
-           appCompositionRoot.viewPager2Animation(viewPager2)
+            viewPager2.setPageTransformer { page, position ->
+                if (position < -1) {    // [-Infinity,-1)
+                    // This page is way off-screen to the left.
+                    page.alpha = 0F
+                } else if (position <= 0) {    // [-1,0]
+                    page.alpha = 1F
+                    page.pivotX = page.width.toFloat()
+                    page.rotationY = -90 * kotlin.math.abs(position)
+                } else if (position <= 1) {    // (0,1]
+                    page.alpha = 1F
+                    page.pivotX = 0F
+                    page.rotationY = 90 * kotlin.math.abs(position)
+                } else {    // (1,+Infinity]
+                    // This page is way off-screen to the right.
+                    page.alpha = 0F
+                }
+            }
 
             viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     // TODO: try catch ViewPager position
-                    try {
+
                        launch(Dispatchers.IO) {
                            handler.removeCallbacks(slideRunnable)
                            handler.postDelayed(slideRunnable,3000)
-                           if (position == loadAdvertising().size-1){
-                               handler.postDelayed({
-                                   binding.viewPager2.setCurrentItem(0,false)
-                               },3000)
+                           try {
+                               if (position == loadAdvertising().size-1){
+                                   handler.postDelayed({
+                                       binding.viewPager2.setCurrentItem(0,false)
+                                   },3000)
+                               }
+                           }catch (e:Exception){
+                               e.printStackTrace()
                            }
                        }
-                    }catch (e:Exception){
-                        e.printStackTrace()
-                    }
+
 
 
                 }
@@ -201,8 +213,8 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
     }
 
     fun createView(){
-        binding.include.shimmer.visibility = View.GONE
-        binding.nestedApp.visibility = View.VISIBLE
+       //binding.include.shimmer.visibility = View.GONE
+//        binding.nestedApp.visibility = View.VISIBLE
     }
 
 

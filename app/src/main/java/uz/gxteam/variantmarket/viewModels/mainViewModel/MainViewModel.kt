@@ -3,7 +3,12 @@ package uz.gxteam.variantmarket.viewModels.mainViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.models.local.cardData.saveCard.SaveCard
 import uz.gxteam.variantmarket.network.repository.ApiRepository
 import uz.gxteam.variantmarket.utils.networkHelper.NetworkHelper
@@ -25,4 +30,6 @@ class MainViewModel @Inject constructor(
     fun setValuePos(pos:SaveCard){
         _liveDataPos.postValue(pos)
     }
+
+
 }

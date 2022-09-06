@@ -221,11 +221,15 @@
                             android:textColor="@color/text_color"
                             android:textSize="@dimen/_10sdp"
                             android:textStyle="normal" />
-
-                        <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:src="@drawable/ic_left" />
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switch_app"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/_6sdp"
+                            android:checked="false"
+                            app:track="@drawable/custom_track"
+                            android:thumb="@drawable/custom_thumb"
+                            android:layout_height="wrap_content"/>
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat

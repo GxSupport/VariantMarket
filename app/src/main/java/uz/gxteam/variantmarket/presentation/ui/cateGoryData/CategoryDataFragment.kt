@@ -47,7 +47,7 @@ class CategoryDataFragment : BaseFragment<FragmentCategoryDataBinding>() {
                }
                tab.customView = binding.root
            }.attach()
-           (appCompositionRoot.activityApp as MainActivity).toolbarTitle(name.toString())
+           (activity as MainActivity).toolbarTitle(name.toString())
            tabLayout.clipChildren = false
            tabLayout.clipToPadding = false
            viewPagerCat.clipChildren = false

@@ -82,9 +82,9 @@ class MySharedPreferences @Inject constructor(
             if (value!=null) it.putString(LANG,value)
         }
     // TODO: theme
-    var theme:Int?
-        get() = sharedPreferences.getInt(THEME,0)
+    var theme:Boolean?
+        get() = sharedPreferences.getBoolean(THEME,false)
         set(value) = sharedPreferences.edit{
-            if (value!=null) it.putInt(THEME,value)
+            if (value!=null) it.putBoolean(THEME,value)
         }
 }

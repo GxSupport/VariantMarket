@@ -8,10 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.ErrorDialogBinding
 import uz.gxteam.variantmarket.databinding.LanguageDialogBinding
-import uz.gxteam.variantmarket.databinding.ThemeStyleBinding
 import uz.gxteam.variantmarket.databinding.UserInfoDialogBinding
 import uz.gxteam.variantmarket.models.local.theme.ThemeModel
 import uz.gxteam.variantmarket.utils.AppConstant.EN
@@ -77,12 +75,6 @@ class DialogHelper(
             R.layout.language_dialog->{
                 languageUpdate(bottomSheetDialog,mySharedPreferences)
             }
-            R.layout.theme_style->{
-                themeApplication(bottomSheetDialog){ color->
-                    mySharedPreferences.theme = color
-                    activity.recreate()
-                }
-            }
         }
         bottomSheetDialog.show()
     }
@@ -96,7 +88,10 @@ class DialogHelper(
         }
     }
     // TODO: language data
-    fun languageUpdate(bottomSheetDialog: BottomSheetDialog,mySharedPreferences: MySharedPreferences){
+    fun languageUpdate(
+        bottomSheetDialog: BottomSheetDialog,
+        mySharedPreferences: MySharedPreferences
+    ){
 
         val binding = LanguageDialogBinding.inflate(activity.layoutInflater)
         bottomSheetDialog.setContentView(binding.root)
@@ -129,17 +124,6 @@ class DialogHelper(
         }
     }
 
-
-    // TODO: Theme application data
-    fun themeApplication(bottomSheetDialog: BottomSheetDialog,onClick:(color:Int)->Unit){
-        val binding = ThemeStyleBinding.inflate(activity.layoutInflater)
-        bottomSheetDialog.setContentView(binding.root)
-       val adapter = AdapterGeneric(R.layout.item_color,getColorList()){ themeModel, position ->
-            onClick.invoke(themeModel.color)
-            bottomSheetDialog.dismiss()
-        }
-        binding.rvColor.adapter = adapter
-    }
     fun getString(id:Int):String{
         return activity.getString(id).lowercase()
     }

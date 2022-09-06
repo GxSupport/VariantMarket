@@ -69,8 +69,8 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment(),CoroutineScope {
 
 
     fun removeMenuHome(){
-        (activity as MainActivity).binding.appBarMain.toolbar.menu.removeItem(R.id.nav_home)
-        (activity as MainActivity).binding.appBarMain.toolbar.menu.removeItem(R.id.nav_gallery)
+        (activity as MainActivity).binding.appBarMain.toolbarApp.menu.removeItem(R.id.nav_home)
+        (activity as MainActivity).binding.appBarMain.toolbarApp.menu.removeItem(R.id.nav_gallery)
     }
 
 

@@ -5,6 +5,8 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.15017985611510792" />
         <entry key="app/src/main/res/drawable-v24/button_back_auth.xml" value="0.218" />
+        <entry key="app/src/main/res/drawable-v24/custom_thumb.xml" value="0.19" />
+        <entry key="app/src/main/res/drawable-v24/custom_track.xml" value="0.19" />
         <entry key="app/src/main/res/drawable-v24/dots_circle.xml" value="0.218" />
         <entry key="app/src/main/res/drawable-v24/ic_delivery.xml" value="0.2515" />
         <entry key="app/src/main/res/drawable-v24/progress_style.xml" value="0.218" />
