@@ -3,6 +3,8 @@ package uz.gxteam.variantmarket.presentation.ui.searchedData
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -10,6 +12,7 @@ import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.BottomSheetDialogBinding
 import uz.gxteam.variantmarket.databinding.FragmentContainerProductBinding
+import uz.gxteam.variantmarket.databinding.FragmentRegistrationBinding
 import uz.gxteam.variantmarket.models.local.searchData.SearchDataAll
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 import uz.gxteam.variantmarket.utils.AppConstant.PRODUCT_CATEGORY
@@ -98,4 +101,7 @@ class ContainerProductFragment : BaseFragment<FragmentContainerProductBinding>()
             pos = it.getInt(POS)
         }
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentContainerProductBinding  =
+        FragmentContainerProductBinding.inflate(inflater,container,false)
 }

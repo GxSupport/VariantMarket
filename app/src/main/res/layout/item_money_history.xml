@@ -9,6 +9,7 @@
         android:layout_marginVertical="@dimen/_5sdp"
         app:cardCornerRadius="@dimen/_5sdp"
         app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/item_color"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
@@ -39,7 +40,7 @@
                 android:id="@+id/product_name"
                 android:textSize="@dimen/_11sdp"
                 android:textStyle="bold"
-                android:textColor="@color/text_color"
+                android:textColor="@color/text_color_app"
                 android:text="Samsung A53"
                 android:fontFamily="@font/inter_medium"
                 android:layout_weight="1"
@@ -58,7 +59,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
         <TextView
             android:id="@+id/summa"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_color_app"
             android:textStyle="bold"
             android:textSize="@dimen/_10sdp"
             android:text="14 000 000 so'm"

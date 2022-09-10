@@ -2,6 +2,8 @@ package uz.gxteam.variantmarket.presentation.ui.authScreen
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -80,4 +82,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
     override fun start(savedInstanceState: Bundle?) {
 
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentAuthBinding =
+        FragmentAuthBinding.inflate(inflater,container,false)
 }

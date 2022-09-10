@@ -15,7 +15,7 @@
                 android:dashGap="@dimen/_8sdp"
                 android:dashWidth="0dp"
                 android:width="1dp"
-                android:color="@color/app_background" />
+                android:color="@color/icon_color_select" />
         </shape>
     </item>
 </layer-list>

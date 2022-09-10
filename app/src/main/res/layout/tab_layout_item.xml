@@ -19,7 +19,7 @@
         <TextView
             android:maxLines="1"
             android:id="@+id/text_data"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_color_app"
             android:textStyle="normal"
             android:fontFamily="@font/inter_medium"
             android:text="@string/category"

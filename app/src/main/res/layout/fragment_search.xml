@@ -33,7 +33,7 @@
                 android:paddingLeft="@dimen/_6sdp"
                 android:paddingRight="@dimen/_6sdp"
                 android:hint="@string/search"
-                android:textColor="@color/text_color"
+                android:textColor="@color/text_color_app"
                 android:textStyle="normal"
                 android:inputType="text"
                 android:fontFamily="@font/inter_regular"

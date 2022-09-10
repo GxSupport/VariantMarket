@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnitType.Companion.Sp
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
@@ -49,6 +48,8 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
             val loadAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_view)
             startShimmer()
 
+            stopShimmer()
+            createView()
 //            Handler(Looper.getMainLooper()).postDelayed({
 //                stopShimmer()
 //                createView()
@@ -70,7 +71,9 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
             }
             viewGenerate(loadAnimation)
 
-
+            categoryTableView.setOnClickListener{
+                appCompositionRoot.screenNavigate.careateCategory()
+            }
             categoryTableView1.setOnClickListener {
                 appCompositionRoot.screenNavigate.createContainerProduct("Chegirma elon qilingan mahsulotlar",DISCOUNT_POS)
             }
@@ -139,15 +142,17 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
                        launch(Dispatchers.IO) {
                            handler.removeCallbacks(slideRunnable)
                            handler.postDelayed(slideRunnable,3000)
-                           try {
+
                                if (position == loadAdvertising().size-1){
                                    handler.postDelayed({
+                                       try {
                                        binding.viewPager2.setCurrentItem(0,false)
+                                       }catch (e:Exception){
+                                           e.printStackTrace()
+                                       }
                                    },3000)
                                }
-                           }catch (e:Exception){
-                               e.printStackTrace()
-                           }
+
                        }
 
 
@@ -213,8 +218,8 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
     }
 
     fun createView(){
-       //binding.include.shimmer.visibility = View.GONE
-//        binding.nestedApp.visibility = View.VISIBLE
+       binding.include.shimmer.visibility = View.GONE
+        binding.nestedApp.visibility = View.VISIBLE
     }
 
 
@@ -260,4 +265,9 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
         }
         return false
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainScreenBinding =
+        FragmentMainScreenBinding.inflate(inflater,container,false)
+
+
 }

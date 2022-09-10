@@ -5,11 +5,14 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.FragmentConfirmUserBinding
+import uz.gxteam.variantmarket.databinding.FragmentQuestionsBinding
 import uz.gxteam.variantmarket.models.confirm.resConfirm.ResponseConfirmData
 import uz.gxteam.variantmarket.models.confirm.sendConfirm.ConfirmData
 import uz.gxteam.variantmarket.models.register.reqRegister.ReqRegister
@@ -109,4 +112,7 @@ class ConfirmUserFragment : BaseFragment<FragmentConfirmUserBinding>() {
         countDownTimer.cancel()
         super.onDestroy()
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentConfirmUserBinding =
+        FragmentConfirmUserBinding.inflate(inflater,container,false)
 }

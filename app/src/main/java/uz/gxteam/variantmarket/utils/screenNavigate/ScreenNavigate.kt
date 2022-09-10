@@ -18,6 +18,10 @@ class ScreenNavigate(
         navController.navigate(R.id.action_splashFragment_to_authFragment)
     }
 
+    fun careateCategory(){
+        navController.navigate(R.id.category)
+    }
+
 
     fun createSearchDataViewInSearchView(search:String){
         var bundle = Bundle()

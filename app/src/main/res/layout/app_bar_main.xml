@@ -10,15 +10,15 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/drawable_color"
         android:theme="@style/Theme.VariantMarketPlace.AppBarOverlay"
         app:elevation="1.5dp">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarApp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:titleTextColor="@color/text_color"/>
+            android:background="@color/drawable_color"
+            app:titleTextColor="@color/text_color_app"/>
     </com.google.android.material.appbar.AppBarLayout>
 
 

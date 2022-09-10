@@ -1,9 +1,12 @@
 package uz.gxteam.variantmarket.presentation.ui.create_card
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.FragmentCardItemDataBinding
+import uz.gxteam.variantmarket.databinding.FragmentCommentBinding
 import uz.gxteam.variantmarket.models.local.cardData.saveCard.SaveCard
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 import uz.gxteam.variantmarket.utils.extensions.textApp
@@ -62,4 +65,7 @@ class CardItemDataFragment : BaseFragment<FragmentCardItemDataBinding>() {
           position = it.getInt(ARG_PARAM2,0)
         }
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCardItemDataBinding =
+        FragmentCardItemDataBinding.inflate(inflater,container,false)
 }

@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/text_search"
             android:text="Dostonbek"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_color_app"
             android:textSize="@dimen/_12sdp"
             android:paddingVertical="@dimen/_5sdp"
             android:textStyle="normal"

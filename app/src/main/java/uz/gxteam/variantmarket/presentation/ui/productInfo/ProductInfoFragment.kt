@@ -2,7 +2,10 @@ package uz.gxteam.variantmarket.presentation.ui.productInfo
 
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import uz.gxteam.variantmarket.adapters.infoProduct.InfoProductAdapter
+import uz.gxteam.variantmarket.databinding.FragmentPasswordResetBinding
 import uz.gxteam.variantmarket.databinding.FragmentProductInfoBinding
 import uz.gxteam.variantmarket.models.local.sliderData.InfoData
 import uz.gxteam.variantmarket.models.local.sliderData.InfoProduct
@@ -72,6 +75,9 @@ class ProductInfoFragment : BaseFragment<FragmentProductInfoBinding>() {
 
         return listInfo
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentProductInfoBinding =
+        FragmentProductInfoBinding.inflate(inflater,container,false)
 
 
 }

@@ -22,6 +22,7 @@
             <androidx.cardview.widget.CardView
                 app:cardCornerRadius="@dimen/_5sdp"
                 app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/item_color"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp">
                 <ImageView
@@ -50,7 +51,7 @@
                 android:id="@+id/text_item"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:text="@string/app_name"
-                android:textColor="@color/text_color"
+                android:textColor="@color/text_color_app"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="normal"
                 android:gravity="center"

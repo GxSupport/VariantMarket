@@ -1,9 +1,12 @@
 package uz.gxteam.variantmarket.presentation.ui.productViewPagerPage
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentProductDataBinding
+import uz.gxteam.variantmarket.databinding.FragmentProductInfoBinding
 import uz.gxteam.variantmarket.models.local.newsData.NewsData
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 
@@ -39,7 +42,8 @@ class ProductDataFragment : BaseFragment<FragmentProductDataBinding>() {
             }
     }
 
-
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentProductDataBinding  =
+        FragmentProductDataBinding.inflate(inflater,container,false)
 
 
 }

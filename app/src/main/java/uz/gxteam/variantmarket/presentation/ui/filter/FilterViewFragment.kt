@@ -2,6 +2,8 @@ package uz.gxteam.variantmarket.presentation.ui.filter
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
@@ -40,6 +42,7 @@ class FilterViewFragment : BaseFragment<FragmentFilterViewBinding>() {
 
     }
 
-
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentFilterViewBinding =
+        FragmentFilterViewBinding.inflate(inflater,container,false)
 
 }

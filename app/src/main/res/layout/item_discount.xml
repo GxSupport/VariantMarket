@@ -58,7 +58,7 @@
         android:textSize="@dimen/_9sdp"
         android:text="Running Shoes"
         android:textStyle="bold"
-        android:textColor="@color/text_color"
+        android:textColor="@color/text_color_app"
         android:fontFamily="@font/inter_light"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>

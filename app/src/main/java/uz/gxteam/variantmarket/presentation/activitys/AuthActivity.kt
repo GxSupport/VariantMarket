@@ -2,7 +2,9 @@ package uz.gxteam.variantmarket.presentation.activitys
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +25,8 @@ class AuthActivity : AppCompatActivity(),UiController {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         val navControllerApp = supportFragmentManager.findFragmentById(R.id.fragment_auth) as NavHostFragment
         appCompositionRoot = AppCompositionRoot(this,navControllerApp.navController,this,this,mainViewModel)
 

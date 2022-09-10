@@ -25,32 +25,32 @@
             android:layout_height="wrap_content">
             <RadioButton
                 android:id="@+id/uz"
-                android:textColor="@color/text_color"
+                android:textColor="@color/text_color_app"
                 android:textStyle="normal"
                 android:textSize="@dimen/_12sdp"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/uz"
-                android:buttonTint="@color/app_background"
+                android:buttonTint="@color/icon_color_select"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <RadioButton
                 android:id="@+id/ru"
-                android:textColor="@color/text_color"
+                android:textColor="@color/text_color_app"
                 android:textStyle="normal"
                 android:textSize="@dimen/_12sdp"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/ru"
-                android:buttonTint="@color/app_background"
+                android:buttonTint="@color/icon_color_select"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <RadioButton
                 android:id="@+id/cr"
-                android:textColor="@color/text_color"
+                android:textColor="@color/text_color_app"
                 android:textStyle="normal"
                 android:textSize="@dimen/_12sdp"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/cr"
-                android:buttonTint="@color/app_background"
+                android:buttonTint="@color/icon_color_select"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </RadioGroup>

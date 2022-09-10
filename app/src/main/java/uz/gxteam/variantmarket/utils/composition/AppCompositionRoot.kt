@@ -49,6 +49,11 @@ class AppCompositionRoot(
     }
 
 
+    fun otherDialog(message:String){
+        dialogHelper.otherAlert(message)
+    }
+
+
     fun errorDialog(
         errorCode:Int,
         errorMessage:String,

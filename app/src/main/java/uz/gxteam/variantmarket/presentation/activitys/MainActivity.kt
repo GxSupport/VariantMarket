@@ -3,7 +3,10 @@ package uz.gxteam.variantmarket.presentation.activitys
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -19,7 +22,7 @@ import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.ActivityMainBinding
-import uz.gxteam.variantmarket.utils.AppConstant
+import uz.gxteam.variantmarket.databinding.NotificationItemBinding
 import uz.gxteam.variantmarket.utils.composition.AppCompositionRoot
 import uz.gxteam.variantmarket.utils.extensions.gone
 import uz.gxteam.variantmarket.utils.extensions.visible
@@ -27,19 +30,27 @@ import uz.gxteam.variantmarket.utils.language.LocaleManager
 import uz.gxteam.variantmarket.utils.uiController.UiController
 import uz.gxteam.variantmarket.viewModels.mainViewModel.MainViewModel
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(),UiController {
     lateinit var binding:ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val mainViewModel:MainViewModel by viewModels()
     lateinit var appCompositionRoot:AppCompositionRoot
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+    override fun onStart() {
+        super.onStart()
         if (mainViewModel.myShared.theme == true){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }else{
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbarApp)
@@ -47,9 +58,32 @@ class MainActivity : AppCompatActivity(),UiController {
         val navControllerApp = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         appCompositionRoot = AppCompositionRoot(this,navControllerApp.navController,this,this,mainViewModel)
 
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        window.statusBarColor = resources.getColor(R.color.white)
-        window.navigationBarColor = resources.getColor(R.color.white)
+        // TODO: Favorites BadgeDrawable BottomNavigation
+        val badgeDrawable = binding.appBarMain.include1.bottomNavigation.getOrCreateBadge(R.id.favorites)
+        badgeDrawable.isVisible = true
+        badgeDrawable.number = 10
+        badgeDrawable.backgroundColor = getColorActivity(R.color.red)
+        badgeDrawable.badgeTextColor = getColorActivity(R.color.white)
+
+        // TODO: Favorites BadgeDrawable BottomNavigation
+        val badgeDrawableOrder = binding.appBarMain.include1.bottomNavigation.getOrCreateBadge(R.id.orders)
+        badgeDrawableOrder.isVisible = true
+        badgeDrawableOrder.number = 3
+        badgeDrawableOrder.backgroundColor = getColorActivity(R.color.red)
+        badgeDrawableOrder.badgeTextColor = getColorActivity(R.color.white)
+        // TODO: Favorites BadgeDrawable NavigationView
+
+        // TODO: Favorites BadgeDrawable NavigationView Favorites
+        val bindingNotificationFavorites = NotificationItemBinding.inflate(layoutInflater)
+        bindingNotificationFavorites.counter.text = "10"
+        binding.navView.menu.findItem(R.id.favorites).actionView = bindingNotificationFavorites.root
+        // TODO: Favorites BadgeDrawable NavigationView Orders
+        val bindingNotificationOrders = NotificationItemBinding.inflate(layoutInflater)
+        bindingNotificationOrders.counter.text = "3"
+        binding.navView.menu.findItem(R.id.orders).actionView = bindingNotificationOrders.root
+
+        window.navigationBarColor = ContextCompat.getColor(this,R.color.navigationOrStatusBarsColor)
+        window.statusBarColor = ContextCompat.getColor(this,R.color.navigationOrStatusBarsColor)
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
 

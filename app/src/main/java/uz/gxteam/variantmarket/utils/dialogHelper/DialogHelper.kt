@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.databinding.ErrorDialogBinding
-import uz.gxteam.variantmarket.databinding.LanguageDialogBinding
-import uz.gxteam.variantmarket.databinding.UserInfoDialogBinding
+import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
+import uz.gxteam.variantmarket.databinding.*
+import uz.gxteam.variantmarket.models.local.history.History
 import uz.gxteam.variantmarket.models.local.theme.ThemeModel
 import uz.gxteam.variantmarket.utils.AppConstant.EN
 import uz.gxteam.variantmarket.utils.AppConstant.END_CLIENT_ERROR
@@ -22,6 +22,7 @@ import uz.gxteam.variantmarket.utils.AppConstant.START_SERVER_ERROR
 import uz.gxteam.variantmarket.utils.AppConstant.UZB
 import uz.gxteam.variantmarket.utils.extensions.checked
 import uz.gxteam.variantmarket.utils.extensions.textApp
+import uz.gxteam.variantmarket.utils.extensions.transparentStatusAndNavigation
 import uz.gxteam.variantmarket.utils.language.LocaleManager
 import uz.gxteam.variantmarket.utils.sharedPreferences.MySharedPreferences
 
@@ -75,6 +76,9 @@ class DialogHelper(
             R.layout.language_dialog->{
                 languageUpdate(bottomSheetDialog,mySharedPreferences)
             }
+            R.layout.bottom_sheet_history_money->{
+                moneyHistoryData(bottomSheetDialog,mySharedPreferences)
+            }
         }
         bottomSheetDialog.show()
     }
@@ -124,26 +128,61 @@ class DialogHelper(
         }
     }
 
+    // TODO: Money History Data
+    fun moneyHistoryData(
+        bottomSheetDialog: BottomSheetDialog,
+        mySharedPreferences: MySharedPreferences
+    ){
+        val binding = BottomSheetHistoryMoneyBinding.inflate(activity.layoutInflater)
+        bottomSheetDialog.setContentView(binding.root)
+        val genericAdapter = AdapterGeneric(R.layout.item_money_history,historyAdapter()){ history, position ->
+
+        }
+        binding.rvData.adapter = genericAdapter
+    }
+
     fun getString(id:Int):String{
         return activity.getString(id).lowercase()
     }
 
-    // TODO: ListColor
-    fun getColorList():ArrayList<ThemeModel>{
-        var listColorModel = ArrayList<ThemeModel>()
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_first)))
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_second)))
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_three)))
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_four)))
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_five)))
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_six)))
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_seven)))
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_eight)))
-        listColorModel.add(ThemeModel(getColor(R.color.theme_appBackground_nine)))
-        return listColorModel
-    }
-
     fun getColor(color:Int):Int{
         return ContextCompat.getColor(context,color)
+    }
+
+
+
+    fun otherAlert(
+        message:String
+    ){
+        val alertDialog = AlertDialog.Builder(activity)
+        val create = alertDialog.create()
+        val binding = DialogApplicationBinding.inflate(activity.layoutInflater)
+        create.setView(binding.root)
+        binding.cancelBtn.setOnClickListener {
+            create.dismiss()
+        }
+        binding.okBtn.setOnClickListener {
+            create.dismiss()
+        }
+        binding.textData.textApp(message)
+        create.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        create.show()
+    }
+
+
+    private fun historyAdapter():ArrayList<History>{
+        val listHistory = ArrayList<History>()
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        listHistory.add(History("Samsung A53","https://www.creditasia.uz/upload/iblock/eeb/1dy3y0jxsuym5c245uzo0nv27o9v20i7/smartfon-samsung-galaxy-a53-5g-sm-a536e-ds-128gb-light-blue.png","Blah Blah Blah","1 400 000 so'm"))
+        return listHistory
     }
 }

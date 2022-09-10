@@ -1,9 +1,12 @@
 package uz.gxteam.variantmarket.presentation.ui.dataProduct
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.adapters.infoProduct.InfoProductAdapter
+import uz.gxteam.variantmarket.databinding.FragmentAuthBinding
 import uz.gxteam.variantmarket.databinding.FragmentDataProductBinding
 import uz.gxteam.variantmarket.models.local.sliderData.Filial
 import uz.gxteam.variantmarket.models.local.sliderData.InfoData
@@ -213,4 +216,7 @@ class DataProductFragment : BaseFragment<FragmentDataProductBinding>() {
         private const val MOTION_TRANSITION_COMPLETED = 1F
         private const val MOTION_TRANSITION_INITIAL = 0F
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentDataProductBinding =
+        FragmentDataProductBinding.inflate(inflater,container,false)
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.FragmentPasswordResetBinding
+import uz.gxteam.variantmarket.databinding.FragmentProfilBinding
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 
 
@@ -20,6 +21,9 @@ class PasswordResetFragment : BaseFragment<FragmentPasswordResetBinding>() {
     override fun start(savedInstanceState: Bundle?) {
 
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentPasswordResetBinding =
+        FragmentPasswordResetBinding.inflate(inflater,container,false)
 
 
 }

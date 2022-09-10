@@ -3,12 +3,15 @@ package uz.gxteam.variantmarket.presentation.ui.cardPage
 import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.DimenRes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
+import uz.gxteam.variantmarket.databinding.FragmentAuthBinding
 import uz.gxteam.variantmarket.databinding.FragmentCardBinding
 import uz.gxteam.variantmarket.models.local.cardData.plasticCard.BankCard
 import uz.gxteam.variantmarket.models.local.history.History
@@ -90,5 +93,8 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
             outRect.left = horizontalMarginInPx
         }
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCardBinding =
+        FragmentCardBinding.inflate(inflater,container,false)
 
 }

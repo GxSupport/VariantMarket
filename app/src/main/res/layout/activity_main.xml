@@ -19,15 +19,16 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/white"
+        android:background="@color/drawable_color"
         app:itemIconTint="@color/icons_color"
         app:itemShapeFillColor="@color/fill_color"
         app:itemRippleColor="@color/app_background"
+        app:itemBackground="@color/drawable_color"
         android:fitsSystemWindows="true"
         app:elevation="0dp"
         app:headerLayout="@layout/nav_header_main"
         app:itemIconSize="@dimen/_18sdp"
-        app:itemTextColor="@color/text_color"
+        app:itemTextColor="@color/app_text_color"
         app:menu="@menu/activity_main_drawer"
         app:theme="@style/NavigationDrawerStyle"/>
 </androidx.drawerlayout.widget.DrawerLayout>

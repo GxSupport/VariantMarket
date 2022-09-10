@@ -4,7 +4,8 @@
     android:layout_height="wrap_content">
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer"
-        android:visibility="gone"
+        android:background="@color/application_background"
+        android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <androidx.core.widget.NestedScrollView
@@ -176,7 +177,6 @@
                 <LinearLayout
                     android:id="@+id/discount"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@color/back_main"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">

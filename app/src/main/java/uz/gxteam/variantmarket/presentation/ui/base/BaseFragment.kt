@@ -28,8 +28,12 @@ import kotlin.coroutines.CoroutineContext
 
 abstract class BaseFragment<VB:ViewBinding>:Fragment(),CoroutineScope {
 
+
     private var _binding : VB? = null
-    val binding :VB get() = _binding!!
+    abstract fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
+
+    @Suppress("UNCHECKED_CAST")
+    protected val binding :VB get() = _binding!!
     val appCompositionRoot get() = (activity as MainActivity).appCompositionRoot
     val appCompositionRootAuth get() = (activity as AuthActivity).appCompositionRoot
     var clickPosition = 0
@@ -43,11 +47,8 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment(),CoroutineScope {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val type = javaClass.genericSuperclass
-        val clazz = (type as ParameterizedType).actualTypeArguments[0] as Class<VB>
-        val method = clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
-        _binding = method.invoke(null, layoutInflater, container, false) as VB
-        return requireNotNull(_binding!!.root)
+        _binding = inflateViewBinding(inflater,container)
+        return requireNotNull(_binding).root
     }
 
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_weight="1"
-        android:background="#52FF9800"
+        android:background="@color/bac_slide_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
@@ -15,7 +15,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:textColor="#4A2E04"
+            android:textColor="@color/text_color_slide"
             android:text="MIN 15 % OFF"
             app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintVertical_bias="0.35"

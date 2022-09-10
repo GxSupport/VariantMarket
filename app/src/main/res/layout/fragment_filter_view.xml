@@ -61,7 +61,7 @@
             app:layout_constraintBottom_toBottomOf="@id/card_cancel"
             android:layout_marginHorizontal="@dimen/_6sdp"
             android:gravity="left|center"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_color_app"
             android:textSize="@dimen/_16sdp"
             android:text="@string/filter"
             android:textStyle="normal"

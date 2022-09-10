@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.R
+import uz.gxteam.variantmarket.databinding.FragmentConfirmUserBinding
 import uz.gxteam.variantmarket.databinding.FragmentRegistrationBinding
 import uz.gxteam.variantmarket.models.register.reqRegister.ReqRegister
 import uz.gxteam.variantmarket.models.register.resRegister.ResponseRegisterData
@@ -111,4 +112,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
             }
         }
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentRegistrationBinding =
+        FragmentRegistrationBinding.inflate(inflater,container,false)
 }

@@ -3,8 +3,11 @@ package uz.gxteam.variantmarket.presentation.ui.favorites
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
+import uz.gxteam.variantmarket.databinding.FragmentCreateCardBinding
 import uz.gxteam.variantmarket.databinding.FragmentFavoritesBinding
 import uz.gxteam.variantmarket.models.local.newsData.NewsData
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
@@ -36,4 +39,7 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>() {
     override fun start(savedInstanceState: Bundle?) {
 
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentFavoritesBinding =
+        FragmentFavoritesBinding.inflate(inflater,container,false)
 }

@@ -112,7 +112,7 @@ open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemVie
                 val gradientDrawable =
                     itemImageBinding.consImage.background.mutate() as GradientDrawable
                 if (position==clickPos){
-                    gradientDrawable.setStroke(3, ContextCompat.getColor(itemView.context,R.color.app_background))
+                    gradientDrawable.setStroke(3, ContextCompat.getColor(itemView.context,R.color.icon_color_select))
                 }else{
                     gradientDrawable.setStroke(3,ContextCompat.getColor(itemView.context,R.color.stroke_color))
                 }
@@ -123,11 +123,11 @@ open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemVie
                 val drawableCompat =
                     itemCheckBinding.consChip.background.mutate() as GradientDrawable
                 if (position==clickPos){
-                    drawableCompat.setColor(ContextCompat.getColor(itemView.context,R.color.app_background))
-                    drawableCompat.setStroke(2,ContextCompat.getColor(itemView.context,R.color.app_background))
+                    drawableCompat.setColor(ContextCompat.getColor(itemView.context,R.color.card_time_color))
+                    drawableCompat.setStroke(2,ContextCompat.getColor(itemView.context,R.color.card_time_color))
                     itemCheckBinding.chipText.setTextColor(Color.WHITE)
                 }else{
-                    drawableCompat.setColor(ContextCompat.getColor(itemView.context,R.color.white))
+                    drawableCompat.setColor(ContextCompat.getColor(itemView.context,R.color.application_background))
                     drawableCompat.setStroke(2,ContextCompat.getColor(itemView.context,R.color.stroke_color))
                     itemCheckBinding.chipText.setTextColor(ContextCompat.getColor(itemView.context,R.color.stroke_color))
                 }
@@ -140,11 +140,11 @@ open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemVie
                 val drawableCompat =
                     binding.consChip.background.mutate() as GradientDrawable
                 if (position==clickPos){
-                    drawableCompat.setColor(ContextCompat.getColor(itemView.context,R.color.app_background))
-                    drawableCompat.setStroke(2,ContextCompat.getColor(itemView.context,R.color.app_background))
+                    drawableCompat.setColor(ContextCompat.getColor(itemView.context,R.color.card_time_color))
+                    drawableCompat.setStroke(2,ContextCompat.getColor(itemView.context,R.color.card_time_color))
                     binding.chipText.setTextColor(Color.WHITE)
                 }else{
-                    drawableCompat.setColor(ContextCompat.getColor(itemView.context,R.color.white))
+                    drawableCompat.setColor(ContextCompat.getColor(itemView.context,R.color.application_background))
                     drawableCompat.setStroke(2,ContextCompat.getColor(itemView.context,R.color.stroke_color))
                     binding.chipText.setTextColor(ContextCompat.getColor(itemView.context,R.color.stroke_color))
                 }
@@ -177,7 +177,7 @@ open class GenericViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemVie
                 if (clickPos!=position){
                     gradientDrawable.setStroke(2,Color.parseColor(category.color))
                 }else{
-                    gradientDrawable.setStroke(2,ContextCompat.getColor(itemView.context,R.color.app_background))
+                    gradientDrawable.setStroke(2,ContextCompat.getColor(itemView.context,R.color.dots_stroke_color))
                 }
             }
             // TODO: ItemCategory

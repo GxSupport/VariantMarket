@@ -3,7 +3,9 @@ package uz.gxteam.variantmarket.presentation.ui.create_card
 import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.DimenRes
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -13,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.viewPagerAdapter.CardAdapter
+import uz.gxteam.variantmarket.databinding.FragmentCardItemDataBinding
 import uz.gxteam.variantmarket.databinding.FragmentCreateCardBinding
 import uz.gxteam.variantmarket.models.local.cardData.saveCard.SaveCard
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
@@ -78,19 +81,19 @@ class CreateCardFragment : BaseFragment<FragmentCreateCardBinding>() {
                 if (saveCard!=null){
                     if (saveCard.cardType==0){
                         humo.setChipBackgroundColorResource(R.color.app_background)
-                        humo.setChipStrokeColorResource(R.color.app_background)
+                        humo.setChipStrokeColorResource(R.color.strocke_color)
                         humo.setTextColor(ContextCompat.getColor(requireContext(),R.color.white))
 
-                        uzcard.setChipBackgroundColorResource(R.color.white)
-                        uzcard.setChipStrokeColorResource(R.color.black)
-                        uzcard.setTextColor(ContextCompat.getColor(requireContext(),R.color.black))
+                        uzcard.setChipBackgroundColorResource(R.color.application_background)
+                        uzcard.setChipStrokeColorResource(R.color.app_background)
+                        uzcard.setTextColor(ContextCompat.getColor(requireContext(),R.color.text_color_app))
                     }else{
-                        humo.setChipBackgroundColorResource(R.color.white)
-                        humo.setChipStrokeColorResource(R.color.black)
-                        humo.setTextColor(ContextCompat.getColor(requireContext(),R.color.black))
+                        humo.setChipBackgroundColorResource(R.color.application_background)
+                        humo.setChipStrokeColorResource(R.color.app_background)
+                        humo.setTextColor(ContextCompat.getColor(requireContext(),R.color.text_color_app))
 
                         uzcard.setChipBackgroundColorResource(R.color.app_background)
-                        uzcard.setChipStrokeColorResource(R.color.app_background)
+                        uzcard.setChipStrokeColorResource(R.color.strocke_color)
                         uzcard.setTextColor(ContextCompat.getColor(requireContext(),R.color.white))
                     }
                 }
@@ -175,5 +178,7 @@ class CreateCardFragment : BaseFragment<FragmentCreateCardBinding>() {
         }
     }
 
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCreateCardBinding =
+        FragmentCreateCardBinding.inflate(inflater,container,false)
 
 }

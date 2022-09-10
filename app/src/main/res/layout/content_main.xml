@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/application_background"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
@@ -15,6 +16,7 @@
         app:itemIconTint="@color/icons_color"
         android:foregroundGravity="center"
         app:itemIconSize="@dimen/_20sdp"
+        android:background="@color/drawable_color"
         app:itemTextColor="@color/icons_color"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>

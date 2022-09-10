@@ -77,7 +77,7 @@
                 android:id="@+id/credit_summa"
                 android:maxLines="1"
                 android:textStyle="bold"
-                android:textColor="@color/text_color"
+                android:textColor="@color/text_color_app"
                 android:textSize="@dimen/_9sdp"
                 android:text="123 560 so'm"
                 android:fontFamily="@font/inter_medium"

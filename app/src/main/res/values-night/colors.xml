@@ -7,15 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="app_background">#2666CE</color>
+    <color name="app_background">#0D1A28</color>
+    <color name="strocke_color">#FFFFFF</color>
+    <color name="drawable_color">#0D1A28</color>
     <color name="color_snack_bar">#1F2937</color>
-    <color name="app_background_hint">#8B2666CE</color>
+    <color name="app_background_hint">#FFFFFFFF</color>
     <color name="auth_btn_color">#852666CE</color>
-    <color name="text_color">#FF000000</color>
+    <color name="text_color_app">#FFFFFFFF</color>
     <color name="splash_text_color">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="hintColor">#9B9696</color>
-    <color name="text_gray_color">#434141</color>
+    <color name="text_gray_color">#9B9696</color>
     <color name="back_main">#F0F0F0</color>
     <color name="back_main1">#FFFFFFFF</color>
     <color name="button_slide_color">#CC6522</color>
@@ -25,7 +27,7 @@
     <color name="discount_color_pr">#8B2666CE</color>
     <color name="text_discount_color">#EA580C</color>
     <color name="star_color">#FFB23F</color>
-    <color name="main_item_title_color">#1F2937</color>
+    <color name="main_item_title_color">#FFFFFF</color>
     <color name="shimmer_color">#36575757</color>
     <color name="shimmer_color_gr">#8D575757</color>
     <color name="discount_image_color">#EA580C</color>
@@ -35,89 +37,21 @@
     <color name="stroke_color">#A1A1A1</color>
     <color name="card_like_pr">#9CFFFFFF</color>
     <color name="color_icon_card">#592666CE</color>
-    <!--    color theme first-->
-    <color name="theme_appBackground_first">#17202A</color>
-    <color name="theme_first_bottom_navigation">#D517202A</color>
-    <color name="theme_first_toolbar">#D517202A</color>
-    <color name="theme_first_textColor">#FFFFFF</color>
-    <color name="theme_first_icon_color">#FFFFFF</color>
-    <color name="theme_first_hint_color">#8FFFFFFF</color>
-    <!--    color theme first-->
 
+    <color name="icon_color_select">#FFFFFFFF</color>
+    <color name="icon_color">#FFFFFF</color>
+    <color name="application_background">#0D1A28</color>
+    <color name="item_color">#25303F</color>
+    <color name="card_time_color">#25303F</color>
+    <color name="item_tab_color_in">#25303F</color>
+    <color name="dots_stroke_color">#FFFFFF</color>
+    <color name="application_background_discount">#1D25303F</color>
 
-    <!--    color theme second-->
-    <color name="theme_appBackground_second">#283747</color>
-    <color name="theme_second_bottom_navigation">#BA283747</color>
-    <color name="theme_second_toolbar">#BA283747</color>
-    <color name="theme_second_textColor">#FFFFFF</color>
-    <color name="theme_second_icon_color">#FFFFFF</color>
-    <color name="theme_second_hint_color">#8FFFFFFF</color>
-    <!--    color theme second-->
+    <color name="navigationOrStatusBarsColor">#0D1A28</color>
+    <color name="text_color_slide">#FFFFFF</color>
+    <color name="bac_slide_color">#D725303F</color>
+    <color name="like_color">#FFFFFF</color>
+    <color name="button_color">#25303F</color>
+    <color name="icon_settings_color">#FFFFFF</color>
 
-
-    <!--    color theme three-->
-    <color name="theme_appBackground_three">#EBF5FB</color>
-    <color name="theme_three_bottom_navigation">#EBF5FB</color>
-    <color name="theme_three_toolbar">#EBF5FB</color>
-    <color name="theme_three_textColor">#000000</color>
-    <color name="theme_three_icon_color">#000000</color>
-    <color name="theme_three_hint_color">#9B9696</color>
-    <!--    color theme three-->
-
-
-    <!--    color theme four-->
-    <color name="theme_appBackground_four">#DC7633</color>
-    <color name="theme_four_bottom_navigation">#BFDC7633</color>
-    <color name="theme_four_toolbar">#BFDC7633</color>
-    <color name="theme_four_textColor">#FFFFFF</color>
-    <color name="theme_four_icon_color">#FFFFFF</color>
-    <color name="theme_four_hint_color">#8FFFFFFF</color>
-    <!--    color theme four-->
-
-    <!--    color theme five-->
-    <color name="theme_appBackground_five">#F4ECF7</color>
-    <color name="theme_five_bottom_navigation">#F4ECF7</color>
-    <color name="theme_five_toolbar">#F4ECF7</color>
-    <color name="theme_five_textColor">#000000</color>
-    <color name="theme_five_icon_color">#000000</color>
-    <color name="theme_five_hint_color">#9B9696</color>
-    <!--    color theme five-->
-
-
-    <!--    color theme six-->
-    <color name="theme_appBackground_six">#2980B9</color>
-    <color name="theme_six_bottom_navigation">#BC2980B9</color>
-    <color name="theme_six_toolbar">#BC2980B9</color>
-    <color name="theme_six_textColor">#FFFFFF</color>
-    <color name="theme_six_icon_color">#FFFFFF</color>
-    <color name="theme_six_hint_color">#8FFFFFFF</color>
-    <!--    color theme six-->
-
-    <!--    color theme seven-->
-    <color name="theme_appBackground_seven">#FFFFFFFF</color>
-    <color name="theme_seven_bottom_navigation">#FFFFFFFF</color>
-    <color name="theme_seven_toolbar">#FFFFFFFF</color>
-    <color name="theme_seven_textColor">#000000</color>
-    <color name="theme_seven_icon_color">#2666CE</color>
-    <color name="theme_seven_hint_color">#9B9696</color>
-    <!--    color theme seven-->
-
-
-    <!--    color theme eight-->
-    <color name="theme_appBackground_eight">#E8F8F5</color>
-    <color name="theme_eight_bottom_navigation">#E8F8F5</color>
-    <color name="theme_eight_toolbar">#E8F8F5</color>
-    <color name="theme_eight_textColor">#000000</color>
-    <color name="theme_eight_icon_color">#2666CE</color>
-    <color name="theme_eight_hint_color">#8FFFFFFF</color>
-    <!--    color theme eight-->
-
-    <!--    color theme nine-->
-    <color name="theme_appBackground_nine">#154360</color>
-    <color name="theme_nine_bottom_navigation">#BA154360</color>
-    <color name="theme_nine_toolbar">#BA154360</color>
-    <color name="theme_nine_textColor">#FFFFFF</color>
-    <color name="theme_nine_icon_color">#FFFFFF</color>
-    <color name="theme_nine_hint_color">#8FFFFFFF</color>
-    <!--    color theme nine-->
 </resources>

@@ -1,10 +1,13 @@
 package uz.gxteam.variantmarket.presentation.ui.settings
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
+import uz.gxteam.variantmarket.databinding.FragmentSearchBinding
 import uz.gxteam.variantmarket.databinding.FragmentSettingsBinding
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 import uz.gxteam.variantmarket.utils.AppConstant.EN
@@ -46,6 +49,20 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
             }
+            // TODO: Money History page Create
+            linearMoney.setOnClickListener {
+                appCompositionRoot.bottomSheetDialogData(R.layout.bottom_sheet_history_money,mainViewModel.myShared)
+            }
+
+            // TODO: Application info Data
+            linearInfoApp.setOnClickListener {
+                appCompositionRoot.otherDialog(requireActivity().getString(R.string.info_application_data))
+            }
+
+            // TODO: Offerta data
+            linearInfoOfferta.setOnClickListener {
+
+            }
 
             val persistedLocale = LocaleManager.getLanguage(requireContext())
             when(persistedLocale?.lowercase()){
@@ -75,5 +92,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
     fun bottomSheetDialog(layoutRes:Int,mySharedPreferences: MySharedPreferences){
         appCompositionRoot.bottomSheetDialogData(layoutRes,mySharedPreferences)
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSettingsBinding =
+        FragmentSettingsBinding.inflate(inflater,container,false)
 
 }

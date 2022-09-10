@@ -20,7 +20,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_color_app"
             android:text="@string/category"
             android:textStyle="normal"
             android:textSize="@dimen/_12sdp"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:textColor="@color/hintColor"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_8sdp"
                 android:textStyle="normal"
                 android:text="@string/viewAll"
                 android:fontFamily="@font/montserrat_light"

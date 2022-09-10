@@ -16,7 +16,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/_15sdp"
             app:layout_constraintHorizontal_bias="0.05"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_color_app"
             android:text="Sort By"
             android:textSize="@dimen/_18sdp"
             android:textStyle="normal"

@@ -1,12 +1,11 @@
 package uz.gxteam.variantmarket.presentation.ui.homeScreen.view.profil
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.*
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import uz.gxteam.variantmarket.R
+import uz.gxteam.variantmarket.databinding.FragmentOrdersBinding
 import uz.gxteam.variantmarket.databinding.FragmentProfilBinding
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 import uz.gxteam.variantmarket.utils.extensions.enabled
@@ -58,4 +57,7 @@ class ProfilFragment : BaseFragment<FragmentProfilBinding>() {
         binding.radioGroup.enabledFalse()
         binding.editBtn.gone()
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentProfilBinding =
+        FragmentProfilBinding.inflate(inflater,container,false)
 }

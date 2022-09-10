@@ -3,6 +3,8 @@ package uz.gxteam.variantmarket.presentation.ui.cateGoryData
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -70,10 +72,11 @@ class CategoryDataFragment : BaseFragment<FragmentCategoryDataBinding>() {
                     binding.tabLayout.getTabAt(i).let {
                         val binding = it?.customView?.let { it1 -> TabLayoutItemBinding.bind(it1) }
                         if(binding!=null){
-                            binding.textData.setTextColor(Color.BLACK)
+                            binding.textData.setTextColor(ContextCompat.getColor(requireContext(),R.color.text_color_app))
                             val gradientDrawable = binding.linearItem.background.mutate() as GradientDrawable
-                            gradientDrawable.setColor(ContextCompat.getColor(appCompositionRoot.activityApp,R.color.white))
-                            gradientDrawable.setStroke(2,ContextCompat.getColor(appCompositionRoot.activityApp,R.color.app_background))
+                            gradientDrawable.setColor(ContextCompat.getColor(appCompositionRoot.activityApp,R.color.item_tab_color_in))
+                            gradientDrawable.setStroke(2,ContextCompat.getColor(appCompositionRoot.activityApp,R.color.item_tab_color_in))
+
                         }
                     }
                 }
@@ -81,7 +84,8 @@ class CategoryDataFragment : BaseFragment<FragmentCategoryDataBinding>() {
                     val binding = it?.customView?.let { it1 -> TabLayoutItemBinding.bind(it1) }
                     if (binding!=null){
                         val gradientDrawable = binding.linearItem.background.mutate() as GradientDrawable
-                        gradientDrawable.setColor(ContextCompat.getColor(appCompositionRoot.activityApp,R.color.app_background))
+                        gradientDrawable.setColor(ContextCompat.getColor(appCompositionRoot.activityApp,R.color.item_tab_color_in))
+                        gradientDrawable.setStroke(2,ContextCompat.getColor(appCompositionRoot.activityApp,R.color.strocke_color))
                         binding.textData.setTextColor(Color.WHITE)
                     }
                 }
@@ -112,9 +116,9 @@ class CategoryDataFragment : BaseFragment<FragmentCategoryDataBinding>() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     // TODO: try catch ViewPager position
-                    try {
                         handler.removeCallbacks(slideRunnable)
                         handler.postDelayed(slideRunnable,3000)
+                    try {
                         if (position == loadAdvertising().size-1){
                             handler.postDelayed({
                                 binding.viewPager2.setCurrentItem(0,false)
@@ -123,8 +127,6 @@ class CategoryDataFragment : BaseFragment<FragmentCategoryDataBinding>() {
                     }catch (e:Exception){
                         e.printStackTrace()
                     }
-
-
                 }
             })
         }
@@ -143,4 +145,7 @@ class CategoryDataFragment : BaseFragment<FragmentCategoryDataBinding>() {
         super.onPause()
         hasMotionScrolled = binding.motion.progress > MOTION_TRANSITION_INITIAL
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCategoryDataBinding =
+        FragmentCategoryDataBinding.inflate(inflater,container,false)
 }

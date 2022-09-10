@@ -4,9 +4,12 @@ package uz.gxteam.variantmarket.presentation.ui.homeScreen.view.category
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentCategoryBinding
+import uz.gxteam.variantmarket.databinding.FragmentFilterViewBinding
 import uz.gxteam.variantmarket.models.local.cateGoryData.CateGoryData
 import uz.gxteam.variantmarket.models.local.simpleCategory.Category
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
@@ -133,4 +136,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
         listData.add(CateGoryData("Mouse","https://i.dell.com/is/image/DellContent//content/dam/ss2/product-images/peripherals/input-devices/dell/mouse/wm126/dell-mouse-wm126-504x350.jpg?fmt=jpg"))
         return listData
     }
+
+    override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCategoryBinding =
+        FragmentCategoryBinding.inflate(inflater,container,false)
 }

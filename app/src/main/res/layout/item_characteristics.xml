@@ -13,7 +13,7 @@
         android:textStyle="bold"
         android:text="@string/app_name"
         android:textAllCaps="false"
-        android:textColor="@color/text_color"
+        android:textColor="@color/text_color_app"
         android:textSize="@dimen/_11sdp"
         android:fontFamily="@font/inter_medium"
         android:layout_width="match_parent"

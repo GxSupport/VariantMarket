@@ -8,14 +8,14 @@
     tools:context=".presentation.ui.searchedData.ContainerProductFragment">
     <include
         android:id="@+id/include_data"
-        android:visibility="visible"
+        android:visibility="gone"
         layout="@layout/shimmer_searchdata_all"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consView"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +31,7 @@
                 app:cardElevation="0dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:cardBackgroundColor="@color/application_background"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +57,7 @@
                 android:maxLines="1"
                 android:text="Dostonbek"
                 android:textSize="@dimen/_14sdp"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color_app"
                 android:fontFamily="@font/inter_medium"
                 app:layout_constraintTop_toTopOf="@id/back"
                 app:layout_constraintLeft_toRightOf="@id/back"
@@ -73,6 +74,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.98"
+                app:cardBackgroundColor="@color/application_background"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="0dp"
                 android:layout_width="@dimen/_25sdp"
@@ -95,6 +97,7 @@
                 app:layout_constraintRight_toLeftOf="@id/lock"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.98"
+                app:cardBackgroundColor="@color/application_background"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp">
                 <ImageView
@@ -112,8 +115,9 @@
             android:layout_height="0dp">
             <TextView
                 android:id="@+id/count_items"
+                android:background="@color/application_background"
                 app:layout_constraintTop_toTopOf="parent"
-                android:textColor="@color/text_color"
+                android:textColor="@color/text_color_app"
                 android:textSize="@dimen/_10sdp"
                 android:text="@string/search_data"
                 android:padding="@dimen/_3sdp"
@@ -125,6 +129,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_items"
                 tools:listitem="@layout/item_search_data"
+                android:background="@color/application_background"
                 app:layout_constraintTop_toBottomOf="@id/count_items"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -163,7 +168,7 @@
                     android:textSize="@dimen/_10sdp"
                     android:text="@string/filter"
                     android:layout_marginTop="@dimen/_4sdp"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/text_color_app"
                     android:layout_height="wrap_content"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -191,7 +196,7 @@
                     android:textSize="@dimen/_10sdp"
                     android:text="@string/sort"
                     android:layout_marginTop="@dimen/_4sdp"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/text_color_app"
                     android:layout_height="wrap_content"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
