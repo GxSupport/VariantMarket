@@ -6,8 +6,10 @@ import androidx.navigation.NavOptions
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.models.register.reqRegister.ReqRegister
 import uz.gxteam.variantmarket.models.register.resRegister.ResponseRegisterData
-import uz.gxteam.variantmarket.utils.AppConstant.REQUEST_REGISTER
-import uz.gxteam.variantmarket.utils.AppConstant.RESPONSE_REGISTER_DATA
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.CATEGORY_ID
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.CATEGORY_NAME
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.REQUEST_REGISTER
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.RESPONSE_REGISTER_DATA
 
 class ScreenNavigate(
     private val navController: NavController
@@ -47,12 +49,15 @@ class ScreenNavigate(
     }
 
 
-    fun createDataProductFragment(name:String,position:Int){
+
+    fun createDataProductFragment(categoryId:Int,name:String){
         var bundle = Bundle()
-        bundle.putString("name",name)
-        bundle.putInt("pos",position)
+        bundle.putInt(CATEGORY_ID,categoryId)
+        bundle.putString(CATEGORY_NAME,name)
         navController.navigate(R.id.categoryDataFragment,bundle,animationViewCreateRight())
     }
+
+
     fun createDataProductFragmentInCategoryView(){
         var bundle = Bundle()
         navController.navigate(R.id.action_categoryDataFragment_to_dataProductFragment,bundle,animationViewCreatebottom())

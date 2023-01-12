@@ -20,7 +20,7 @@ import uz.gxteam.variantmarket.viewModels.authVm.AuthVm
 import uz.gxteam.variantmarket.viewModels.registerVm.RegisterVM
 
 @AndroidEntryPoint
-class AuthFragment : BaseFragment<FragmentAuthBinding>() {
+class  AuthFragment : BaseFragment<FragmentAuthBinding>() {
     private var isPhone:Boolean?=false
     private var isPassword:Boolean?=false
     private val authVm:AuthVm by viewModels()

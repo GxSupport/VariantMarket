@@ -10,8 +10,7 @@ import androidx.annotation.DimenRes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
-import uz.gxteam.variantmarket.databinding.FragmentAuthBinding
+import uz.gxteam.variantmarket.adaptersLocale.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentCardBinding
 import uz.gxteam.variantmarket.models.local.cardData.plasticCard.BankCard
 import uz.gxteam.variantmarket.models.local.history.History

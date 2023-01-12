@@ -17,11 +17,18 @@
         <item name="android:windowBackground">@color/app_background</item>
         <item name="colorPrimaryInverse">@color/white</item>
         <item name="colorOnSurfaceInverse">@color/white</item>
-
-
-
-
     </style>
+
+
+
+    <style name="ToolbarTextStyle" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+    <style name="App.ToolbarStyle" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+
 
     <style name="splashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/app_background</item>
@@ -38,17 +45,6 @@
     <style name="NavigationDrawerStyle">
         <item name="android:textSize">@dimen/_13sdp</item><!-- text size in menu-->
         <item name="android:textColor">@color/black</item>
-        <!-- item size in menu-->
-        <!--        <item name="android:listPreferredItemHeightSmall">40dp</item>-->
-        <!--        <item name="listPreferredItemHeightSmall">40dp</item>-->
-
-        <!--        &lt;!&ndash; item padding left in menu&ndash;&gt;-->
-        <!--        <item name="android:listPreferredItemPaddingLeft">8dp</item>-->
-        <!--        <item name="listPreferredItemPaddingLeft">8dp</item>-->
-
-        <!--        &lt;!&ndash; item padding right in menu&ndash;&gt;-->
-        <!--        <item name="android:listPreferredItemPaddingRight">8dp</item>-->
-        <!--        <item name="listPreferredItemPaddingRight">8dp</item>-->
     </style>
 
     <style name="Theme.VariantMarketPlace.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

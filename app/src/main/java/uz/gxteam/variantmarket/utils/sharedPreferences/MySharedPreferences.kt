@@ -1,21 +1,22 @@
 package uz.gxteam.variantmarket.utils.sharedPreferences
 
+import android.Manifest.permission_group.PHONE
 import android.content.Context
 import android.content.SharedPreferences
+import android.provider.Telephony.Carriers.PASSWORD
 
 import dagger.hilt.android.qualifiers.ApplicationContext
-import uz.gxteam.variantmarket.utils.AppConstant.ACCESS_TOKEN
-import uz.gxteam.variantmarket.utils.AppConstant.CODE_CONFIRM
-import uz.gxteam.variantmarket.utils.AppConstant.COMPANY_NAME
-import uz.gxteam.variantmarket.utils.AppConstant.EMPTY
-import uz.gxteam.variantmarket.utils.AppConstant.LANG
-import uz.gxteam.variantmarket.utils.AppConstant.REFRESH_TOKEN
-import uz.gxteam.variantmarket.utils.AppConstant.REGISTER_DATA
-import uz.gxteam.variantmarket.utils.AppConstant.REGISTER_DATA_V
-import uz.gxteam.variantmarket.utils.AppConstant.RU
-import uz.gxteam.variantmarket.utils.AppConstant.THEME
-import uz.gxteam.variantmarket.utils.AppConstant.TOKEN_TYPE
-import uz.gxteam.variantmarket.utils.AppConstant.UZB
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.ACCESS_TOKEN
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.CODE_CONFIRM
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.COMPANY_NAME
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.EMPTY
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.LANG
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.REFRESH_TOKEN
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.REGISTER_DATA
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.REGISTER_DATA_V
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.RU
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.THEME
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.TOKEN_TYPE
 import javax.inject.Inject
 
 class MySharedPreferences @Inject constructor(
@@ -30,7 +31,13 @@ class MySharedPreferences @Inject constructor(
         operation(editor)
         editor.apply()
     }
-
+    fun clearToken(){
+        sharedPreferences.edit().remove(ACCESS_TOKEN).apply()
+        sharedPreferences.edit().remove(REFRESH_TOKEN).apply()
+        sharedPreferences.edit().remove(TOKEN_TYPE).apply()
+        sharedPreferences.edit().remove(PHONE).apply()
+        sharedPreferences.edit().remove(PASSWORD).apply()
+    }
 
     fun clearAll() {
         sharedPreferences.edit().clear().apply()

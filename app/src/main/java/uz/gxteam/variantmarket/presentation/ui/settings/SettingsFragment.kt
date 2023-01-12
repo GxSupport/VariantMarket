@@ -7,12 +7,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.databinding.FragmentSearchBinding
 import uz.gxteam.variantmarket.databinding.FragmentSettingsBinding
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
-import uz.gxteam.variantmarket.utils.AppConstant.EN
-import uz.gxteam.variantmarket.utils.AppConstant.RU
-import uz.gxteam.variantmarket.utils.AppConstant.UZB
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.EN
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.RU
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.UZB
 import uz.gxteam.variantmarket.utils.extensions.textApp
 import uz.gxteam.variantmarket.utils.language.LocaleManager
 import uz.gxteam.variantmarket.utils.sharedPreferences.MySharedPreferences

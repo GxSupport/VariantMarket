@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/_8sdp"
-    android:paddingBottom="@dimen/_8sdp"
-    android:paddingLeft="@dimen/_12sdp"
-    android:paddingRight="@dimen/_12sdp"
+    android:paddingTop="@dimen/_6sdp"
+    android:paddingBottom="@dimen/_6sdp"
+    android:paddingLeft="@dimen/_5sdp"
+    android:paddingRight="@dimen/_5sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:id="@+id/card_btn"
@@ -16,17 +16,16 @@
         app:cardUseCompatPadding="false"
         app:cardElevation="0dp"
         app:cardCornerRadius="@dimen/_22sdp"
-        android:layout_width="@dimen/_43sdp"
-        android:layout_height="@dimen/_43sdp">
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="@dimen/_7sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="center"
+                android:scaleType="centerCrop"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -41,10 +40,14 @@
         app:layout_constraintRight_toRightOf="@id/card_btn"
         android:text="Furniture"
         android:textStyle="bold"
-        android:textSize="@dimen/_8sdp"
-        android:textColor="@color/text_color_app"
+        android:textSize="@dimen/_7sdp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/text_gray_color"
         android:fontFamily="@font/montserrat_light"
         android:layout_marginTop="@dimen/_3sdp"
+        android:maxWidth="@dimen/_50sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

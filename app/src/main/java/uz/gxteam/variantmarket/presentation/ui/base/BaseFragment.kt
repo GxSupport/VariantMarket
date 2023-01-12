@@ -47,8 +47,10 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment(),CoroutineScope {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = inflateViewBinding(inflater,container)
-        return requireNotNull(_binding).root
+        if (_binding == null) {
+            _binding = inflateViewBinding(inflater, container)
+        }
+        return binding.root
     }
 
 
@@ -81,9 +83,6 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment(),CoroutineScope {
     }
 
 
-    fun toolbarLeftIcon(){
-        appCompositionRoot.activityApp.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_left)
-    }
 
     fun toolbarShow(){
         (activity as MainActivity).supportActionBar?.show()

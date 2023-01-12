@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
+import uz.gxteam.variantmarket.adaptersLocale.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentFilterViewBinding
 import uz.gxteam.variantmarket.models.local.filter.FilterData
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment

@@ -140,9 +140,6 @@ class MainActivity : AppCompatActivity(),UiController {
                R.id.dataProductFragment->{
                    supportActionBar?.hide()
                }
-               R.id.categoryDataFragment->{
-                   supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_left)
-               }
            }
         }
     }

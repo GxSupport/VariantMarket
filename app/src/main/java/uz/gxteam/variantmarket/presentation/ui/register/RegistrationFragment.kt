@@ -76,9 +76,9 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
                     registerVM.registrationMarketClient(reqRegister)
                     launch {
                         registerVM.responseRegisterData.fetchResult(appCompositionRootAuth.uiControllerApp,{ responseRegisterData ->
-                            val registerData = responseRegisterData?.gsonData()
-                            myShared.registerData = registerData
-                            appCompositionRootAuth.screenNavigate.createConfirmPage(responseRegisterData!!,reqRegister)
+                            val registerData = responseRegisterData?.parseClass(ResponseRegisterData::class.java)
+                            myShared.registerData = responseRegisterData.toString()
+                            appCompositionRootAuth.screenNavigate.createConfirmPage(registerData!!,reqRegister)
                         },{ errorCode, errorMessage ->
                             appCompositionRootAuth.uiControllerApp.error(errorCode,errorMessage){
                                 if(it){ }

@@ -74,4 +74,7 @@
                 android:layout_height="match_parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include
+        android:id="@+id/include_shimmer"
+        layout="@layout/shimmer_category_data"/>
 </androidx.constraintlayout.motion.widget.MotionLayout>

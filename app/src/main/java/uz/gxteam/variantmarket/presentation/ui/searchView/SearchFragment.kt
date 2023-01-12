@@ -3,16 +3,12 @@ package uz.gxteam.variantmarket.presentation.ui.searchView
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
-import uz.gxteam.variantmarket.databinding.FragmentContainerProductBinding
+import uz.gxteam.variantmarket.adaptersLocale.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentSearchBinding
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
 

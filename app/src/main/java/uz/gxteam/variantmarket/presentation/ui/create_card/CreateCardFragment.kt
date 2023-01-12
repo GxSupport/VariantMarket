@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.viewPagerAdapter.CardAdapter
-import uz.gxteam.variantmarket.databinding.FragmentCardItemDataBinding
+import uz.gxteam.variantmarket.adaptersLocale.viewPagerAdapter.CardAdapter
 import uz.gxteam.variantmarket.databinding.FragmentCreateCardBinding
 import uz.gxteam.variantmarket.models.local.cardData.saveCard.SaveCard
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
@@ -27,7 +26,6 @@ class CreateCardFragment : BaseFragment<FragmentCreateCardBinding>() {
         binding.apply {
             removeMenuHome()
 
-            toolbarLeftIcon()
             cardNumber()
             // TODO: Default value card Data
             var saveCard = SaveCard("-----------------------","0000 0000 0000 0000","00/00",0,"-----------------")

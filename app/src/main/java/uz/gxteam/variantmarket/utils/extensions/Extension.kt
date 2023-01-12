@@ -2,6 +2,7 @@ package uz.gxteam.variantmarket.utils.extensions
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.icu.text.NumberFormat
@@ -14,19 +15,20 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.annotation.LayoutRes
-import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import androidx.viewbinding.ViewBinding
-import coil.dispose
 import coil.load
-import coil.request.ImageRequest
-import com.github.ybq.android.spinkit.SpinKitView
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonElement
 import kotlinx.coroutines.flow.StateFlow
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.BottomSheetDialogBinding
+import uz.gxteam.variantmarket.utils.language.LocaleManager
 import uz.gxteam.variantmarket.utils.responseState.ResponseState
 import uz.gxteam.variantmarket.utils.uiController.UiController
 import java.util.*
@@ -73,6 +75,15 @@ inline fun Any.gsonData():String{
     return gson.create().toJson(this)
 }
 
+fun <T> JsonElement.parseClass(classData:Class<T>):T{
+    val gson = Gson()
+    return gson.fromJson(this,classData)
+}
+
+
+fun logData(message:String){
+    Log.e("VariantMarket_log_e", message)
+}
 
 
 fun RadioButton.checked(){
@@ -105,6 +116,12 @@ fun View.enabled(){
 fun View.enabledFalse(){
     this.isEnabled = false
 }
+
+
+fun String?.isNotEmptyOrNull():Boolean{
+    return this != null && this.isNotEmpty() && this != ""
+}
+
 fun String.colorParse():Int{
     return Color.parseColor(this)
 }
@@ -118,6 +135,18 @@ fun ImageView.dataImage(imageUrl:String,viewData:(isCreate:Boolean)->Unit){
         crossfade(400)
     }
     viewData.invoke(true)
+}
+
+fun ImageView.imageData(url:String,context: Context){
+    val circularProgressDrawable = CircularProgressDrawable(context)
+    circularProgressDrawable.strokeWidth = 5f
+    circularProgressDrawable.centerRadius = 30f
+    circularProgressDrawable.start()
+    circularProgressDrawable.setColorSchemeColors(ContextCompat.getColor(context, R.color.strocke_color))
+    Glide.with(context)
+        .load(url)
+        .placeholder(circularProgressDrawable)
+        .into(this)
 }
 
 fun BottomSheetDialog.createData(@LayoutRes layoutRes:Int, onClick:(vb:ViewBinding)->Unit){
@@ -143,6 +172,11 @@ fun <A: Activity> Activity.startNewActivity(activity: Class<A>){
         it.flags = Intent.FLAG_ACTIVITY_NEW_TASK.or(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(it)
     }
+}
+
+fun getLanguage(context: Context):String{
+    // ru en uz
+    return LocaleManager.getLanguage(context)
 }
 
 @SuppressLint("NewApi")

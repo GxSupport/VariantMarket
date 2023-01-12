@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.BuildConfig.BASE_URL
 import uz.gxteam.variantmarket.models.auth.AuthData
-import uz.gxteam.variantmarket.network.repository.ApiRepository
-import uz.gxteam.variantmarket.utils.AppConstant.API
-import uz.gxteam.variantmarket.utils.AppConstant.AUTH_LOGIN
-import uz.gxteam.variantmarket.utils.AppConstant.EMPTY_MAP
-import uz.gxteam.variantmarket.utils.AppConstant.JSON_DATA
-import uz.gxteam.variantmarket.utils.AppConstant.NO_INTERNET_CONNECTION
+import uz.gxteam.variantmarket.repository.apiRepository.ApiRepositoryImpl
+import uz.gxteam.variantmarket.usesCase.apiUsesCase.ApiUsesCase
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.API
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.AUTH_LOGIN
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.JSON_DATA
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.NO_INTERNET_CONNECTION
 import uz.gxteam.variantmarket.utils.networkHelper.NetworkHelper
 import uz.gxteam.variantmarket.utils.responseState.ResponseState
 import uz.gxteam.variantmarket.utils.sharedPreferences.MySharedPreferences
@@ -23,7 +23,7 @@ import javax.inject.Inject
 class AuthVm @Inject constructor(
     private val networkHelper: NetworkHelper,
     private val mySharedPreferences: MySharedPreferences,
-    private val apiRepository:ApiRepository
+    private val apiUsesCase: ApiUsesCase
 ):ViewModel() {
     // TODO: Auth Application
     val authData:StateFlow<ResponseState<Any?>> get() = _authData
@@ -36,7 +36,7 @@ class AuthVm @Inject constructor(
     fun authApp(authData: AuthData) = viewModelScope.launch {
         if (networkHelper.isNetworkConnected()){
             _authData.emit(ResponseState.Loading)
-            apiRepository.methodePOST<Any>(urlAuth,authData,getMapHeader(),EMPTY_MAP)
+            apiUsesCase.methodePost(urlAuth,authData,getMapHeader())
                 .collect{response-> _authData.emit(response) }
         }else{
             _authData.emit(ResponseState.Error(NO_INTERNET_CONNECTION))

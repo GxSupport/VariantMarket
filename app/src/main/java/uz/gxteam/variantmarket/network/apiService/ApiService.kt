@@ -1,43 +1,37 @@
 package uz.gxteam.variantmarket.network.apiService
 
+import com.google.gson.JsonElement
 import retrofit2.Response
 import retrofit2.http.*
-import uz.gxteam.variantmarket.utils.AppConstant.EMPTY
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.EMPTY
 
 // TODO: This ApiService request and response generic data
 interface ApiService {
-    // TODO: ApiService Methode Get
     @GET
-    suspend fun <T> methodeGet(
-        @Url fulUrl:String,
-        @HeaderMap mapHeader:HashMap<String,String>?,
-        @QueryMap mapQuery:HashMap<String,String>?
-    ): Response<T>
+    suspend fun methodeGet(
+        @Url url:String,
+        @QueryMap queryMap:HashMap<String,String>?
+    ):Response<JsonElement>
 
-    // TODO: ApiService Methode Post
     @POST
-    suspend fun <T> methodePost(
-        @Url fulUrl:String,
-        @Body body:Any?=EMPTY,
-        @HeaderMap mapHeader:HashMap<String,String>?,
-        @QueryMap mapQuery:HashMap<String,String>?
-    ): Response<T>
+    suspend fun methodePost(
+        @Url url:String,
+        @Body body:Any,
+        @QueryMap queryMap:HashMap<String,String>?
+    ):Response<JsonElement>
 
-    // TODO: ApiService Methode Put
     @PUT
-    suspend fun <T> methodePut(
-        @Url fulUrl:String,
-        @Body body:Any?=EMPTY,
-        @HeaderMap mapHeader:HashMap<String,String>?,
-        @QueryMap mapQuery:HashMap<String,String>?
-    ): Response<T>
+    suspend fun methodePut(
+        @Url url:String,
+        @Body body:Any,
+        @QueryMap queryMap:HashMap<String,String>?
+    ):Response<JsonElement>
 
-    // TODO: ApiService Methode Delete
+
     @DELETE
-    suspend fun <T> methodeDELETE(
-        @Url fulUrl:String,
-        @Body body:Any?=EMPTY,
-        @HeaderMap mapHeader:HashMap<String,String>?,
-        @QueryMap mapQuery:HashMap<String,String>?
-    ): Response<T>
+    suspend fun methodeDelete(
+        @Url url:String,
+        @Body body:Any,
+        @QueryMap queryMap:HashMap<String,String>?
+    ):Response<JsonElement>
 }

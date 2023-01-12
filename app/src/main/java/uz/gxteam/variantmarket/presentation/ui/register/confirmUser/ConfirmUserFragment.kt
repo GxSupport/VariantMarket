@@ -2,9 +2,6 @@ package uz.gxteam.variantmarket.presentation.ui.register.confirmUser
 
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -12,15 +9,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.R
 import uz.gxteam.variantmarket.databinding.FragmentConfirmUserBinding
-import uz.gxteam.variantmarket.databinding.FragmentQuestionsBinding
 import uz.gxteam.variantmarket.models.confirm.resConfirm.ResponseConfirmData
 import uz.gxteam.variantmarket.models.confirm.sendConfirm.ConfirmData
 import uz.gxteam.variantmarket.models.register.reqRegister.ReqRegister
 import uz.gxteam.variantmarket.models.register.resRegister.ResponseRegisterData
 import uz.gxteam.variantmarket.presentation.activitys.MainActivity
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
-import uz.gxteam.variantmarket.utils.AppConstant
-import uz.gxteam.variantmarket.utils.AppConstant.RESPONSE_REGISTER_DATA
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.RESPONSE_REGISTER_DATA
 import uz.gxteam.variantmarket.utils.extensions.*
 import uz.gxteam.variantmarket.viewModels.registerVm.RegisterVM
 
@@ -42,7 +38,7 @@ class ConfirmUserFragment : BaseFragment<FragmentConfirmUserBinding>() {
                 launch {
                     registerVM.responseRegisterData.fetchResult(appCompositionRootAuth.uiControllerApp,{responseRegisterDataRes ->
                         if (responseRegisterDataRes != null) {
-                            responseRegisterData = responseRegisterDataRes
+                            responseRegisterData = responseRegisterDataRes.parseClass(ResponseRegisterData::class.java)
                             startTimer()
                         }
                     },{ errorCode, errorMessage ->
@@ -59,9 +55,10 @@ class ConfirmUserFragment : BaseFragment<FragmentConfirmUserBinding>() {
                     registerVM.confirmClient(confirmData)
                     launch {
                         registerVM.confirmData.fetchResult(appCompositionRootAuth.uiControllerApp,{responseConfirmData ->
-                            myShared.accessToken = responseConfirmData?.access_token
-                            myShared.refreshToken = responseConfirmData?.refresh_token
-                            myShared.tokenType = responseConfirmData?.token_type
+                            val responseConfirm = responseConfirmData?.parseClass(ResponseConfirmData::class.java)
+                            myShared.accessToken = responseConfirm?.access_token
+                            myShared.refreshToken = responseConfirm?.refresh_token
+                            myShared.tokenType = responseConfirm?.token_type
                             appCompositionRootAuth.activityApp.startNewActivity(MainActivity::class.java)
                             appCompositionRootAuth.activityApp.finish()
                         },{ errorCode, errorMessage ->

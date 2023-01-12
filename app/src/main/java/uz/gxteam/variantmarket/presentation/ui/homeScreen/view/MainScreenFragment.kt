@@ -7,44 +7,82 @@ import android.util.Log
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnitType.Companion.Sp
-import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.adapterAll.AllItemAdapter
-import uz.gxteam.variantmarket.adapters.advertising.AdvertisingAdapter
-import uz.gxteam.variantmarket.adapters.discount.DiscountAdapter
-import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
+import uz.gxteam.variantmarket.adapters.genericAdapter.GenericAdapter
+import uz.gxteam.variantmarket.adaptersLocale.adapterAll.AllItemAdapter
+import uz.gxteam.variantmarket.adaptersLocale.advertising.AdvertisingAdapter
+import uz.gxteam.variantmarket.adaptersLocale.discount.DiscountAdapter
+import uz.gxteam.variantmarket.adaptersLocale.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentMainScreenBinding
+import uz.gxteam.variantmarket.models.categoryModel.CategoryModel
+import uz.gxteam.variantmarket.models.categoryModel.Succes
 import uz.gxteam.variantmarket.models.local.allM.AllData
 import uz.gxteam.variantmarket.models.local.allM.CategoryAll
 import uz.gxteam.variantmarket.models.local.discount.Discount
 import uz.gxteam.variantmarket.models.local.newsData.NewsData
 import uz.gxteam.variantmarket.models.local.simpleCategory.Category
 import uz.gxteam.variantmarket.models.local.simpleSlide.SlideData
+import uz.gxteam.variantmarket.models.register.resRegister.Success
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
-import uz.gxteam.variantmarket.utils.AppConstant.DISCOUNT_POS
-import uz.gxteam.variantmarket.utils.AppConstant.PRODUCT_CATEGORY
-import uz.gxteam.variantmarket.viewModels.mainViewModel.MainViewModel
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.DEFAULT_CLICK_TYPE
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.DISCOUNT_POS
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.EN
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.PRODUCT_CATEGORY
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.RU
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.UZB
+import uz.gxteam.variantmarket.utils.extensions.getLanguage
+import uz.gxteam.variantmarket.utils.extensions.logData
+import uz.gxteam.variantmarket.utils.extensions.parseClass
+import uz.gxteam.variantmarket.utils.responseState.ResponseState
+import uz.gxteam.variantmarket.viewModels.homeViewModel.HomeViewModel
 
 @AndroidEntryPoint
 class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvider {
+    // home screen viewModel
+    private val homeViewModel:HomeViewModel by viewModels()
+
     private lateinit var listCategory:ArrayList<Category>
     private lateinit var advertisingAdapter:AdvertisingAdapter
     private lateinit var discountAdapter: DiscountAdapter
     private lateinit var allItemAdapter: AllItemAdapter
     private lateinit var categoryAdapter:AdapterGeneric<Category>
     private lateinit var adapterGenericNews:AdapterGeneric<NewsData>
+
+    // generic adapter category
+    private val genericAdapterCategory:GenericAdapter<Succes> by lazy {
+        GenericAdapter(R.layout.item_category){ data, position, clickType ->
+            when(clickType){
+                DEFAULT_CLICK_TYPE->{
+                    var name = ""
+                    when(getLanguage(requireContext()).lowercase()){
+                        UZB.lowercase()->{
+                            name = data.name_uz
+                        }
+                        RU.lowercase()->{
+                            name = data.name_ru
+                        }
+                        EN.lowercase()->{
+                            name = data.name_uzc
+                        }
+                    }
+                    appCompositionRoot.screenNavigate.createDataProductFragment(data.id,name)
+                }
+            }
+        }
+    }
+
     override fun setup(savedInstanceState: Bundle?) {
         binding.apply {
+
+           mainData()
+
             val loadAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_view)
             startShimmer()
 
@@ -80,6 +118,31 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
         }
     }
 
+
+    private fun mainData(){
+        homeViewModel.getCategory()
+        lifecycleScope.launchWhenCreated {
+            homeViewModel.categoryData.collect { result->
+                when(result){
+                    is ResponseState.Loading->{
+                        startShimmer()
+                    }
+                    is ResponseState.Success->{
+                        // category data
+                        val categoryModel = result.data[0]?.parseClass(CategoryModel::class.java)
+                        genericAdapterCategory.submitList(categoryModel?.success)
+                        binding.rvCategory.adapter = genericAdapterCategory
+                    }
+                    is ResponseState.Error->{
+                      appCompositionRoot.errorDialog(result.errorCode?:0, errorMessage = result.errorMessage.toString()){
+                          if (it) mainData()
+                      }
+                    }
+                }
+            }
+        }
+    }
+
     override fun start(savedInstanceState: Bundle?) {
         loadCategoryData()
     }
@@ -102,12 +165,6 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
                 appCompositionRoot.screenNavigate.createContainerProduct(newProduct.text.toString().trim(),0)
             }
 
-            // categoryAdapter
-            // TODO:  categoryAdapter
-            categoryAdapter = AdapterGeneric(R.layout.item_category,listCategory){category, position ->
-              appCompositionRoot.screenNavigate.createDataProductFragment(category.name,position)
-            }
-            rvCategory.adapter = categoryAdapter
             // advertisingAdapter
             advertisingAdapter = AdvertisingAdapter(loadAdvertising(),object:AdvertisingAdapter.OnItemClikcListener{
                 override fun onItemClick(slideData: SlideData, position: Int) {
@@ -265,6 +322,8 @@ class MainScreenFragment : BaseFragment<FragmentMainScreenBinding>(), MenuProvid
         }
         return false
     }
+
+
 
     override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainScreenBinding =
         FragmentMainScreenBinding.inflate(inflater,container,false)

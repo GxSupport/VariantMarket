@@ -35,7 +35,7 @@
                 <EditText
                     android:id="@+id/searchInput"
                     android:maxLines="1"
-                    android:layout_marginTop="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -46,15 +46,14 @@
                     android:drawableStart="@drawable/ic_search_normal"
                     android:paddingStart="@dimen/_8sdp"
                     android:hint="@string/search"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_10ssp"
                     android:textColor="@color/text_color_app"
                     android:textStyle="normal"
                     android:inputType="text"
                     android:fontFamily="@font/inter_regular"
-                    android:layout_height="@dimen/_35sdp"/>
+                    android:layout_height="@dimen/_30sdp"/>
                 <View
                     android:id="@+id/searchView"
-
                     app:layout_constraintTop_toTopOf="@id/searchInput"
                     app:layout_constraintLeft_toLeftOf="@id/searchInput"
                     app:layout_constraintRight_toRightOf="@id/searchInput"

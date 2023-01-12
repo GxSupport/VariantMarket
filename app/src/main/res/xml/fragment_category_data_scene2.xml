@@ -10,8 +10,7 @@
        <KeyFrameSet>
        </KeyFrameSet>
         <OnSwipe motion:touchAnchorId="@+id/viewPager2" />
-        <OnSwipe motion:touchAnchorId="@+id/viewPager2" />
-        <OnSwipe motion:touchAnchorId="@+id/spring_dots_indicator" />
+        <OnSwipe motion:touchAnchorId="@+id/nested" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">

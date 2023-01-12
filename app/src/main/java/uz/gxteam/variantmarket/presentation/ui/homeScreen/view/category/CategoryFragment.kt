@@ -1,140 +1,143 @@
 package uz.gxteam.variantmarket.presentation.ui.homeScreen.view.category
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import uz.gxteam.variantmarket.R
-import uz.gxteam.variantmarket.adapters.genericAdapter.AdapterGeneric
+import uz.gxteam.variantmarket.adapters.genericAdapter.GenericAdapter
+import uz.gxteam.variantmarket.adaptersLocale.genericAdapter.AdapterGeneric
 import uz.gxteam.variantmarket.databinding.FragmentCategoryBinding
-import uz.gxteam.variantmarket.databinding.FragmentFilterViewBinding
+import uz.gxteam.variantmarket.models.categoryModel.CategoryModel
+import uz.gxteam.variantmarket.models.categoryModel.Succes
 import uz.gxteam.variantmarket.models.local.cateGoryData.CateGoryData
 import uz.gxteam.variantmarket.models.local.simpleCategory.Category
 import uz.gxteam.variantmarket.presentation.ui.base.BaseFragment
-import uz.gxteam.variantmarket.utils.AppConstant.OB_POS
+import uz.gxteam.variantmarket.utils.appConstant.AppConstant.OB_POS
 import uz.gxteam.variantmarket.utils.extensions.gone
+import uz.gxteam.variantmarket.utils.extensions.logData
+import uz.gxteam.variantmarket.utils.extensions.parseClass
 import uz.gxteam.variantmarket.utils.extensions.visible
+import uz.gxteam.variantmarket.utils.responseState.ResponseState
+import uz.gxteam.variantmarket.viewModels.categoryDataVm.CategoryDataViewModel
 
-
+@AndroidEntryPoint
 class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
-    private lateinit var adapterGeneric: AdapterGeneric<CateGoryData>
-    private lateinit var adapterGenericCategory: AdapterGeneric<Category>
-    private lateinit var listCategory:ArrayList<Category>
+    // cateGory data viewModel
+    private val categoryDataViewModel:CategoryDataViewModel by viewModels()
+    // category id
+    private var categoryId = 0
+    // generic adapter category
+    private val adapterGenericCategory: GenericAdapter<Succes> by lazy {
+        GenericAdapter(R.layout.item_category_view){ data, position, clickType ->
+            adapterGenericCategory.setPositionClick(position)
+            categoryId = data.id
+            getCategoryIdChild(categoryId)
+        }
+    }
+
+
+    private val categoryAdapterSecond:GenericAdapter<Succes> by lazy {
+        GenericAdapter(R.layout.category_data_item){ data, position, clickType ->
+
+        }
+    }
 
     override fun setup(savedInstanceState: Bundle?) {
         binding.apply {
-            includeCategory.shimmerCategory.startShimmer()
-            includeCategory.shimmerCategory.visible()
-            rvCategory.gone()
-            rvCategoryData.gone()
-            Handler(Looper.getMainLooper()).postDelayed({
-                includeCategory.shimmerCategory.stopShimmer()
-                includeCategory.shimmerCategory.gone()
-                rvCategory.visible()
-                rvCategoryData.visible()
-            },1500)
+            categoryData()
+            binding.rvCategoryData.adapter = categoryAdapterSecond
+            // swipe refresh color
+            binding.refreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(),R.color.strocke_color))
+        }
+    }
 
-            // TODO: Category
-            adapterGenericCategory = AdapterGeneric(R.layout.item_category_view,loadCategoryData()){category, position ->
-                adapterGenericCategory.setPositionClick(position)
-                when(position){
-                    0->{
-                        adapterGeneric.currentResult = loadCateGoryDataView()
-                        adapterGeneric.notifyDataSetChanged()
+    private fun categoryData() {
+        categoryDataViewModel.getCategory(null)
+        lifecycleScope.launchWhenCreated {
+            categoryDataViewModel.categoryData.collect { result->
+                when(result){
+                    is ResponseState.Loading->{
+                       binding.includeCategory.shimmerCategory.visible()
                     }
-                    1->{
-                        adapterGeneric.currentResult = loadCateGoryDataViewElectronic()
-                        adapterGeneric.notifyDataSetChanged()
+                    is ResponseState.Success->{
+                       binding.includeCategory.shimmerCategory.gone()
+                        // category adapter
+                        val categoryModel = result.data?.parseClass(CategoryModel::class.java)
+                        adapterGenericCategory.submitList(categoryModel?.success?: emptyList())
+                        binding.rvCategory.adapter = adapterGenericCategory
+                        binding.rvCategory.setItemViewCacheSize(categoryModel?.success?.size?:0)
+                        categoryId = categoryModel?.success?.get(0)?.id?:0
+                        getCategoryIdChild(categoryId)
+                        // swipe refresh category
+                        binding.refreshLayout.setOnRefreshListener {
+                            getCategoryIdChild(categoryId)
+                        }
                     }
-                    2->{
-                        adapterGeneric.currentResult = loadCateGoryDataViewElectronic()
-                        adapterGeneric.notifyDataSetChanged()
-                    }
-                    3->{
-                        adapterGeneric.currentResult = loadCateGoryDataView()
-                        adapterGeneric.notifyDataSetChanged()
-                    }
-                    4->{
-                        adapterGeneric.currentResult = loadCateGoryDataViewElectronic()
-                        adapterGeneric.notifyDataSetChanged()
+                    is ResponseState.Error->{
+                        binding.includeCategory.shimmerCategory.gone()
+                        appCompositionRoot.errorDialog(result.errorCode?:0,result.errorMessage.toString()){
+                            if (it) categoryData()
+                        }
                     }
                 }
             }
-            rvCategory.adapter = adapterGenericCategory
-            // TODO: CategoryData
-            adapterGeneric = AdapterGeneric(R.layout.category_data_item,loadCateGoryDataView()){cateGoryData, position ->
-                appCompositionRoot.screenNavigate.createDataProductFragment(cateGoryData.title,OB_POS)
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun getCategoryIdChild(categoryId:Int){
+        categoryDataViewModel.getCategoryChild(categoryId)
+        lifecycleScope.launchWhenCreated {
+            categoryDataViewModel.categoryDataChild.collect { result->
+                when(result){
+                    is ResponseState.Loading->{
+                       binding.includeCategory.shimmerCategory.visible()
+                       binding.rvCategoryData.gone()
+                       if (binding.linearNoData.isVisible){
+                           binding.linearNoData.gone()
+                       }
+                    }
+                    is ResponseState.Success->{
+                        binding.includeCategory.shimmerCategory.gone()
+                        binding.rvCategoryData.visible()
+                        binding.refreshLayout.isRefreshing = false
+                        // category adapter
+                        val categoryModel = result.data?.parseClass(CategoryModel::class.java)
+                        logData(categoryModel?.success.toString())
+
+                        if (categoryModel?.success?.isEmpty() == true){
+                            binding.linearNoData.visible()
+                            binding.rvCategoryData.gone()
+                        } else {
+                            binding.linearNoData.gone()
+                            binding.rvCategoryData.visible()
+                            categoryAdapterSecond.submitList(categoryModel?.success?: emptyList())
+                            binding.rvCategoryData.setItemViewCacheSize(categoryModel?.success?.size?:0)
+                        }
+                    }
+                    is ResponseState.Error->{
+                        binding.includeCategory.shimmerCategory.gone()
+                        appCompositionRoot.errorDialog(result.errorCode?:0,result.errorMessage.toString()){
+                            if (it) categoryData()
+                        }
+                    }
+                }
             }
-            rvCategoryData.adapter = adapterGeneric
         }
     }
 
     override fun start(savedInstanceState: Bundle?) {
 
-    }
-
-    fun loadCategoryData():ArrayList<Category> {
-        listCategory = ArrayList()
-        listCategory.add(
-            Category(
-                name = "Fashion",
-                image = R.drawable.ic_shirt,
-                color = "#3C2DD4BF"
-            )
-        )
-        listCategory.add(
-            Category(
-                name = "Electronics",
-                image = R.drawable.ic_electron,
-                color = "#5BFB923C"
-            )
-        )
-        listCategory.add(
-            Category(
-                name = "Appliances",
-                image = R.drawable.ic_appliances,
-                color = "#3E34D399"
-            )
-        )
-        listCategory.add(
-            Category(
-                name = "Beauty",
-                image = R.drawable.ic_pamad,
-                color = "#4122D3EE"
-            )
-        )
-        listCategory.add(
-            Category(
-                name = "Furniture",
-                image = R.drawable.ic_furniture,
-                color = "#3E3B82F6"
-            )
-        )
-        return listCategory
-    }
-    fun loadCateGoryDataView():ArrayList<CateGoryData>{
-        var listData = ArrayList<CateGoryData>()
-        listData.add(CateGoryData("Mans","https://image.shutterstock.com/image-photo/casually-handsome-confident-young-man-260nw-439433326.jpg"))
-        listData.add(CateGoryData("Women's","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-ZHqWA3ajb0g2TmGMYzSoRpiR5HqjelAKfw&usqp=CAU"))
-        listData.add(CateGoryData("Kids","https://thumbs.dreamstime.com/b/children-kids-diversity-friendship-happiness-cheerful-concept-56679027.jpg"))
-        listData.add(CateGoryData("Children","https://media.istockphoto.com/photos/beautiful-happy-boy-with-painted-hands-picture-id1207261035?k=20&m=1207261035&s=612x612&w=0&h=aEzfrUNuXjGHGhLa0Eet4yGHzsFu3BGsD1W8xu_2UJM="))
-        listData.add(CateGoryData("Mans","https://image.shutterstock.com/image-photo/casually-handsome-confident-young-man-260nw-439433326.jpg"))
-        listData.add(CateGoryData("Mans","https://image.shutterstock.com/image-photo/casually-handsome-confident-young-man-260nw-439433326.jpg"))
-    return listData
-    }
-
-
-    fun loadCateGoryDataViewElectronic():ArrayList<CateGoryData>{
-        var listData = ArrayList<CateGoryData>()
-        listData.add(CateGoryData("Campyuter","https://cdn.macbro.uz/macbro/ad319481-63dc-4bc2-bf4d-7a6c7aec02f5"))
-        listData.add(CateGoryData("Phone","https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGhvbmV8ZW58MHx8MHx8&w=1000&q=80"))
-        listData.add(CateGoryData("Kids","https://thumbs.dreamstime.com/b/children-kids-diversity-friendship-happiness-cheerful-concept-56679027.jpg"))
-        listData.add(CateGoryData("I watch","https://techno.uz/image/cache/catalog/w42sb-sbbk-gallery-2-700x500.jpg"))
-        listData.add(CateGoryData("Air pods","https://kattabozor.s3.eu-central-1.amazonaws.com/ri/fa205fe513f10e5d952a3885228c22b8fc169ff08387fad36ef9ba5166d32e5f_0YTlio_640l.jpg"))
-        listData.add(CateGoryData("Mouse","https://i.dell.com/is/image/DellContent//content/dam/ss2/product-images/peripherals/input-devices/dell/mouse/wm126/dell-mouse-wm126-504x350.jpg?fmt=jpg"))
-        return listData
     }
 
     override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCategoryBinding =
